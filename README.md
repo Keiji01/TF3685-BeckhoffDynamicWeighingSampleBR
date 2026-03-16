@@ -1,0 +1,2 @@
+# TF3685-BeckhoffDynamicWeighingSampleBR
+TF3685-BeckhoffDynamicWeighingSampleBR
