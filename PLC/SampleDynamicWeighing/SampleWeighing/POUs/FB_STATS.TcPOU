@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.17">
+  <POU Name="FB_STATS" Id="{4541cb63-232f-4da0-a8b1-467e9e1d35de}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_STATS
+VAR_INPUT
+	bValidMeasurement		: BOOL;
+	fLastWeight				: LREAL;
+	fLastStd				: LREAL;
+	bNewResult				: BOOL;
+	bZerarGrafico			: BOOL;
+	fReferenceMeasurement	: LREAL;
+END_VAR
+VAR_OUTPUT
+	fMaxWeight				: LREAL;
+	fMinWeight				: LREAL;
+	fDelta					: LREAL;
+	
+	fMinReference			: LREAL;
+	fMaxReference			: LREAL;
+	fDeltaReference			: LREAL;
+END_VAR
+VAR
+	arrGraph 			: ARRAY[1..1, 1..100] OF ST_POINTS;
+	bSystemInit			: BOOL := FALSE;
+	i					: INT;
+	RTRIG_bNewResult		: R_TRIG;
+	R_TRIG_bZerarGrafico	: R_TRIG;
+	bFirstResult			: BOOL := TRUE;
+	bCanRegister			: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(* Last Weight Values to Plot in a Chart *)
+
+IF NOT bSystemInit THEN
+	(* Starting X reference chat *)
+	FOR i:= 1 TO 100 DO
+		arrGraph[1,i].x := i;
+	END_FOR
+END_IF
+
+IF bValidMeasurement THEN
+	(* Capture that we have Last Valid Weight until bNewResult Triggers *)
+	bCanRegister	:= TRUE;
+END_IF
+
+RTRIG_bNewResult(CLK:= bCanRegister AND bNewResult, Q=> );
+
+IF RTRIG_bNewResult.Q THEN
+	(* FIFO for graph *)
+	FOR i:= 100 TO 2 BY -1 DO
+		arrGraph[1,i].y := arrGraph[1, i-1].y;
+	END_FOR
+	
+	arrGraph[1,1].y 	:= fLastWeight;
+	fLastWeight 		:= fLastWeight;
+	fLastStd 			:= fLastStd;
+	
+	IF NOT bFirstResult THEN
+		(* Check Max and Min Weighs *)
+		IF fLastWeight > fMaxWeight THEN
+			fMaxWeight := fLastWeight;
+		END_IF
+		
+		IF fLastWeight < fMinWeight THEN
+			fMinWeight := fLastWeight;
+		END_IF
+	ELSE
+		fMaxWeight := fLastWeight;
+		fMinWeight := fLastWeight;
+		bFirstResult := FALSE;
+	END_IF
+	
+	bCanRegister := FALSE;
+END_IF
+
+R_TRIG_bZerarGrafico(CLK:= bZerarGrafico, Q=> );
+
+IF R_TRIG_bZerarGrafico.Q THEN
+	FOR i:= 100 TO 1 BY -1 DO
+		arrGraph[1,i].y := 0;
+	END_FOR
+	
+	fMinWeight := 0;
+	fMaxWeight := 0;
+	bFirstResult := TRUE;
+	fMinReference := 0;
+	fMaxReference := 0;
+END_IF
+
+fDelta := fMaxWeight - fMinWeight;
+
+(* Stats for Reference Signals [Raw or Filtered] Measurement *)
+
+IF fMinReference = 0 THEN (* 0 means that no min value was registered *)
+	fMinReference := fReferenceMeasurement;
+ELSIF fReferenceMeasurement > fMaxReference THEN
+	fMaxReference := fReferenceMeasurement;
+	
+ELSIF fReferenceMeasurement < fMinReference THEN
+	fMinReference := fReferenceMeasurement;
+END_IF
+
+fDeltaReference := fMaxReference - fMinReference;
+
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,147 @@
+<?xml version="1.0"?>
+<TcSmProject xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.20">
+	<DataTypes>
+		<DataType>
+			<Name GUID="{46C950DA-5D6E-6516-D69B-F24F38546D38}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..16] OF BOOL</Name>
+			<BitSize>128</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+			<ArrayInfo>
+				<LBound>1</LBound>
+				<Elements>16</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{8B10461D-4958-8550-CE4F-EE8137045945}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..2] OF INT</Name>
+			<BitSize>32</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000006}">INT</BaseType>
+			<ArrayInfo>
+				<LBound>1</LBound>
+				<Elements>2</Elements>
+			</ArrayInfo>
+		</DataType>
+		<DataType>
+			<Name GUID="{71B58F72-0E49-50EB-B8E4-1CCD027538EC}" IecBaseType="true" AutoDeleteType="true">ARRAY [1..8] OF BOOL</Name>
+			<BitSize>64</BitSize>
+			<BaseType GUID="{18071995-0000-0000-0000-000000000030}">BOOL</BaseType>
+			<ArrayInfo>
+				<LBound>1</LBound>
+				<Elements>8</Elements>
+			</ArrayInfo>
+		</DataType>
+	</DataTypes>
+	<Project ProjectGUID="{6D8726C9-81AA-428F-93CC-2A4E47B65CA2}" TargetNetId="10.199.162.27.1.1" Target64Bit="true" AutoPrioManagement="true" ShowHideConfigurations="#x1c7">
+		<System>
+			<Settings MaxCpus="4">
+				<Cpu CpuId="3"/>
+				<IoIdleTask Priority="6"/>
+			</Settings>
+			<Licenses>
+				<Target>
+					<ManualSelect>{A1AF8A04-C08D-4853-A5A0-0E6C3A278A8C}</ManualSelect>
+					<ManualSelect>{6952449D-F68C-49A2-ADE4-8639D85B33A4}</ManualSelect>
+				</Target>
+			</Licenses>
+			<Tasks>
+				<Task Id="3" Priority="4" CycleTime="10000" AmsPort="350" AdtTasks="true">
+					<Name>PlcTask</Name>
+				</Task>
+			</Tasks>
+		</System>
+		<Plc>
+			<Project GUID="{56A80D75-69D7-4236-9BB8-7F740244D806}" Name="SampleWeighing" PrjFilePath="SampleWeighing\SampleWeighing.plcproj" TmcFilePath="SampleWeighing\SampleWeighing.tmc" ReloadTmc="true" AmsPort="851" FileArchiveSettings="#x000e" SymbolicMapping="true">
+				<Instance Id="#x08502000" TcSmClass="TComPlcObjDef" KeepUnrestoredLinks="2" TmcHash="{A49CA29E-3668-E8E6-1C1D-858436A8DBEE}" TmcPath="SampleWeighing\SampleWeighing.tmc">
+					<Name>SampleWeighing Instance</Name>
+					<CLSID ClassFactory="TcPlc30">{08500001-0000-0000-F000-000000000064}</CLSID>
+					<Vars VarGrpType="2" AreaNo="1">
+						<Name>PlcTask Outputs</Name>
+						<Var>
+							<Name>GVL_IO.EL3356_SampleMode</Name>
+							<Type>BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.arrDOs</Name>
+							<Type GUID="{71B58F72-0E49-50EB-B8E4-1CCD027538EC}">ARRAY [1..8] OF BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.arrAOs</Name>
+							<Type GUID="{8B10461D-4958-8550-CE4F-EE8137045945}">ARRAY [1..2] OF INT</Type>
+						</Var>
+					</Vars>
+					<Vars VarGrpType="1">
+						<Name>PlcTask Inputs</Name>
+						<Var>
+							<Name>GVL_IO.arrDIs</Name>
+							<Type GUID="{46C950DA-5D6E-6516-D69B-F24F38546D38}">ARRAY [1..16] OF BOOL</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.arrAIs</Name>
+							<Type GUID="{8B10461D-4958-8550-CE4F-EE8137045945}">ARRAY [1..2] OF INT</Type>
+						</Var>
+						<Var>
+							<Name>GVL_IO.EL3356_RawInput</Name>
+							<Type>REAL</Type>
+						</Var>
+					</Vars>
+					<Contexts>
+						<Context>
+							<Id>0</Id>
+							<Name>PlcTask</Name>
+							<ManualConfig>
+								<OTCID>#x02010030</OTCID>
+							</ManualConfig>
+							<Priority>4</Priority>
+							<CycleTime>1000000</CycleTime>
+						</Context>
+					</Contexts>
+					<TaskPouOids>
+						<TaskPouOid Prio="4" OTCID="#x08502001"/>
+					</TaskPouOids>
+				</Instance>
+			</Project>
+		</Plc>
+		<Io>
+			<Device File="Device 2 (EtherCAT).xti" Id="2"/>
+		</Io>
+	</Project>
+	<Mappings>
+		<MappingInfo Identifier="{00000000-2001-0850-0020-500820000403}" Id="#x02030010"/>
+		<OwnerA Name="TIPC^SampleWeighing^SampleWeighing Instance">
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1100)^Term 2 (EL1809)">
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[10]" VarB="Channel 10^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[11]" VarB="Channel 11^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[12]" VarB="Channel 12^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[13]" VarB="Channel 13^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[14]" VarB="Channel 14^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[15]" VarB="Channel 15^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[16]" VarB="Channel 16^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[1]" VarB="Channel 1^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[2]" VarB="Channel 2^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[3]" VarB="Channel 3^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[4]" VarB="Channel 4^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[5]" VarB="Channel 5^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[6]" VarB="Channel 6^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[7]" VarB="Channel 7^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[8]" VarB="Channel 8^Input"/>
+				<Link VarA="PlcTask Inputs^GVL_IO.arrDIs[9]" VarB="Channel 9^Input"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1100)^Term 3 (EL2808)">
+				<Link VarA="PlcTask Outputs^GVL_IO.arrDOs[1]" VarB="Channel 1^Output"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.arrDOs[2]" VarB="Channel 2^Output"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.arrDOs[3]" VarB="Channel 3^Output"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.arrDOs[4]" VarB="Channel 4^Output"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.arrDOs[5]" VarB="Channel 5^Output"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.arrDOs[6]" VarB="Channel 6^Output"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.arrDOs[7]" VarB="Channel 7^Output"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.arrDOs[8]" VarB="Channel 8^Output"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 1 (EK1100)^Term 5 (EL4132)">
+				<Link VarA="PlcTask Outputs^GVL_IO.arrAOs[1]" VarB="Channel 1^Output"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.arrAOs[2]" VarB="Channel 2^Output"/>
+			</OwnerB>
+			<OwnerB Name="TIID^Device 2 (EtherCAT)^Term 14 (EK1100)^Term 15 (EL3356-0010)">
+				<Link VarA="PlcTask Inputs^GVL_IO.EL3356_RawInput" VarB="RMB Value (Real)^Value (Real)"/>
+				<Link VarA="PlcTask Outputs^GVL_IO.EL3356_SampleMode" VarB="RMB Control^Ctrl^Sample mode"/>
+			</OwnerB>
+		</OwnerA>
+	</Mappings>
+</TcSmProject>

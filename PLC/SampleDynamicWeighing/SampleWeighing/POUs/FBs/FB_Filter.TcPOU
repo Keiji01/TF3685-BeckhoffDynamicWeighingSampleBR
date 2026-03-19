@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.17">
+  <POU Name="FB_Filter" Id="{40ddad30-9286-44b4-8553-f38ef8951065}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Filter
+VAR_INPUT
+	rEntrada: REAL;
+END_VAR
+VAR_OUTPUT
+	rSaida: REAL;
+END_VAR
+VAR
+	arCoef_Taps10: ARRAY[1..10] OF REAL;
+	arLeitura: ARRAY[1..10] OF REAL;
+	i: INT;
+	rAux: REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Filtro - FPB_11Hz_10taps
+
+arCoef_Taps10[1] := 	8.84359775738877E-002;
+arCoef_Taps10[2] := 	9.59556442767806E-002;
+arCoef_Taps10[3] := 	1.01831088400691E-001;
+arCoef_Taps10[4] := 	1.05863099175751E-001;
+arCoef_Taps10[5] := 	1.07914190572890E-001;
+arCoef_Taps10[6] := 	1.07914190572890E-001;
+arCoef_Taps10[7] := 	1.05863099175751E-001;
+arCoef_Taps10[8] :=		1.01831088400691E-001;
+arCoef_Taps10[9] :=		9.59556442767806E-002;
+arCoef_Taps10[10] :=	8.84359775738877E-002;
+
+rSaida := 0.0;
+FOR i:= 10 TO 2 BY -1 DO
+	arLeitura[i] := arLeitura[i-1];	
+	rAux := arLeitura[i] * arCoef_Taps10[i];
+	rSaida := rSaida + rAux;
+END_FOR
+
+arLeitura[1] := rEntrada;
+
+rSaida := rSaida + (arLeitura[1] * arCoef_Taps10[1]);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

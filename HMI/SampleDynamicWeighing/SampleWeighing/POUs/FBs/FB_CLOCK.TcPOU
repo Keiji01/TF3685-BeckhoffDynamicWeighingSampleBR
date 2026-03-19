@@ -1,0 +1,336 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.17">
+  <POU Name="FB_CLOCK" Id="{972e5c9a-3f24-4afe-83a7-e898aa53a620}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_CLOCK
+VAR_INPUT
+	bENABLE		: BOOL;
+	TIME_ON		: TIME;	// Time to mantain clk ON
+	TIME_OFF 	: TIME; // Time to mantain clk OFF
+END_VAR
+VAR_OUTPUT
+	OUT_CLK				: BOOL; // CLK out
+	OUT_CLK_R_TRIGGED	: BOOL; // Added a Rising Trigger Detection to CLK
+END_VAR
+VAR
+	TON_1				: TON;
+	TON_2				: TON;
+	OUT_CLOCK_R_TRIG	: R_TRIG;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <LADDER>
+        <XmlArchive>
+          <Data>
+            <o xml:space="preserve" t="LadderImplementationObject">
+              <v n="ModelJson">"{
+  "$type": "LadderDataModel",
+  "Networks": [
+    {
+      "$type": "Network",
+      "Id": "WAriIYnH",
+      "Sequence": {
+        "$type": "Sequence",
+        "Elements": [
+          {
+            "$type": "Block",
+            "BlockType": "TON",
+            "Instance": {
+              "$type": "Operand",
+              "Expression": "TON_1"
+            },
+            "Inputs": [
+              {
+                "$type": "Input",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "IN"
+                },
+                "Sequence": {
+                  "$type": "Sequence",
+                  "Elements": [
+                    {
+                      "$type": "Contact",
+                      "Operand": {
+                        "$type": "Operand",
+                        "Expression": "bENABLE"
+                      }
+                    },
+                    {
+                      "$type": "Contact",
+                      "Operand": {
+                        "$type": "Operand",
+                        "Expression": "TON_2.Q",
+                        "Modifier": {
+                          "$type": "Modifier",
+                          "Negation": true
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "$type": "Input",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "PT"
+                },
+                "Sequence": {
+                  "$type": "Sequence",
+                  "Elements": [
+                    {
+                      "$type": "InVariable",
+                      "Operand": {
+                        "$type": "Operand",
+                        "Expression": "TIME_OFF"
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "Outputs": [
+              {
+                "$type": "Output",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "Q"
+                }
+              },
+              {
+                "$type": "Output",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "ET"
+                },
+                "OutVariable": {
+                  "$type": "OutVariable",
+                  "Operand": {
+                    "$type": "Operand"
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "$type": "Coil",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "OUT_CLK"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "$type": "Network",
+      "Id": "9rI1KAZs",
+      "Sequence": {
+        "$type": "Sequence",
+        "Elements": [
+          {
+            "$type": "Block",
+            "BlockType": "TON",
+            "Instance": {
+              "$type": "Operand",
+              "Expression": "TON_2"
+            },
+            "Inputs": [
+              {
+                "$type": "Input",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "IN"
+                },
+                "Sequence": {
+                  "$type": "Sequence",
+                  "Elements": [
+                    {
+                      "$type": "Contact",
+                      "Operand": {
+                        "$type": "Operand",
+                        "Expression": "bENABLE"
+                      }
+                    },
+                    {
+                      "$type": "Contact",
+                      "Operand": {
+                        "$type": "Operand",
+                        "Expression": "TON_1.Q"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "$type": "Input",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "PT"
+                },
+                "Sequence": {
+                  "$type": "Sequence",
+                  "Elements": [
+                    {
+                      "$type": "InVariable",
+                      "Operand": {
+                        "$type": "Operand",
+                        "Expression": "TIME_ON"
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "Outputs": [
+              {
+                "$type": "Output",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "Q"
+                }
+              },
+              {
+                "$type": "Output",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "ET"
+                },
+                "OutVariable": {
+                  "$type": "OutVariable",
+                  "Operand": {
+                    "$type": "Operand"
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "$type": "Network",
+      "Id": "2sK1X34P",
+      "Sequence": {
+        "$type": "Sequence",
+        "Elements": [
+          {
+            "$type": "Block",
+            "BlockType": "R_TRIG",
+            "Instance": {
+              "$type": "Operand",
+              "Expression": "OUT_CLOCK_R_TRIG"
+            },
+            "Inputs": [
+              {
+                "$type": "Input",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "EN"
+                },
+                "Sequence": {
+                  "$type": "Sequence",
+                  "Elements": [
+                    {
+                      "$type": "Contact",
+                      "Operand": {
+                        "$type": "Operand",
+                        "Expression": "bENABLE"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "$type": "Input",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "CLK"
+                },
+                "Sequence": {
+                  "$type": "Sequence",
+                  "Elements": [
+                    {
+                      "$type": "Contact",
+                      "Operand": {
+                        "$type": "Operand",
+                        "Expression": "TON_1.Q"
+                      }
+                    }
+                  ]
+                }
+              }
+            ],
+            "Outputs": [
+              {
+                "$type": "Output",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "ENO"
+                }
+              },
+              {
+                "$type": "Output",
+                "Pin": {
+                  "$type": "Pin",
+                  "Name": "Q"
+                },
+                "OutVariable": {
+                  "$type": "OutVariable",
+                  "Operand": {
+                    "$type": "Operand",
+                    "Expression": "OUT_CLK_R_TRIGGED"
+                  }
+                }
+              }
+            ],
+            "En": true,
+            "Eno": true
+          }
+        ]
+      }
+    },
+    {
+      "$type": "Network",
+      "Id": "FK0OlPhb",
+      "Sequence": {
+        "$type": "Sequence",
+        "Elements": [
+          {
+            "$type": "Contact",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "bENABLE",
+              "Modifier": {
+                "$type": "Modifier",
+                "Negation": true
+              }
+            }
+          },
+          {
+            "$type": "Coil",
+            "Operand": {
+              "$type": "Operand",
+              "Expression": "OUT_CLK",
+              "Modifier": {
+                "$type": "Modifier",
+                "Storage": 2
+              }
+            }
+          }
+        ]
+      }
+    }
+  ]
+}"</v>
+            </o>
+          </Data>
+          <TypeList>
+            <Type n="LadderImplementationObject">{f0fda5b8-8c48-4377-bbd5-c49444e4d26e}</Type>
+            <Type n="String">System.String</Type>
+          </TypeList>
+        </XmlArchive>
+      </LADDER>
+    </Implementation>
+  </POU>
+</TcPlcObject>

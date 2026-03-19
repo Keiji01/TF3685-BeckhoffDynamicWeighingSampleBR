@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.17">
+  <POU Name="P_LightTest" Id="{023d4536-9e75-4446-856e-692438769e1d}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_LightTest
+VAR
+	i					: INT;
+	allSwitchsInTrue	: BOOL;
+	iState				: INT;
+	TON_STEP			: TON;
+	fbClockLeds			: FB_CLOCK;
+	bToggleSwitch		: BOOL;
+	rTrigSw8: R_TRIG;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[rTrigSw8(CLK:= GVL_IO.arrDIs[8]);
+
+IF rTrigSw8.Q THEN
+	bToggleSwitch := NOT bToggleSwitch;
+END_IF
+
+allSwitchsInTrue := TRUE;
+
+FOR i := 1 TO 7 DO
+	allSwitchsInTrue := allSwitchsInTrue AND GVL_IO.arrDIs[i] AND bToggleSwitch;
+END_FOR
+
+IF NOT allSwitchsInTrue THEN
+	iState := 0;	
+END_IF
+
+CASE iState OF 
+	0: // Init Step
+		GVL_IO.arrDOs[1] := FALSE;
+		GVL_IO.arrDOs[2] := FALSE;
+		GVL_IO.arrDOs[3] := FALSE;
+		GVL_IO.arrDOs[4] := FALSE;
+		
+		IF allSwitchsInTrue THEN
+			iState := 10;
+		END_IF
+		
+	10: // Stand Step
+		FOR i := 1 TO 4 DO
+			GVL_IO.arrDOs[i] := TRUE;
+		END_FOR
+	
+		TON_STEP(IN:= TRUE, PT:= T#5S);
+		
+		IF TON_STEP.Q THEN
+			TON_STEP(IN:= FALSE);
+			iState := 15;
+		END_IF
+		
+	15: // Blink Step	
+		TON_STEP(IN:= TRUE, PT:= T#5S);
+		
+		fbClockLeds(
+					bENABLE:= TRUE, 
+					TIME_ON:= T#100MS, 
+					TIME_OFF:= T#100MS);
+					
+		FOR i := 1 TO 4 DO
+			GVL_IO.arrDOs[i] := fbClockLeds.OUT_CLK;
+		END_FOR
+				
+		IF TON_STEP.Q THEN
+			TON_STEP(IN:= FALSE);
+			iState := 20;
+		END_IF
+		
+	20: // Sequential Step
+		GVL_IO.arrDOs[1] := TRUE;
+		GVL_IO.arrDOs[2] := FALSE;
+		GVL_IO.arrDOs[3] := FALSE;
+		GVL_IO.arrDOs[4] := FALSE;
+		
+		TON_STEP(IN:= TRUE, PT:= T#1S);
+		
+		IF TON_STEP.Q THEN
+			TON_STEP(IN:= FALSE);
+			iState := 25;
+		END_IF
+
+	25: // Sequential Step
+		GVL_IO.arrDOs[1] := FALSE;
+		GVL_IO.arrDOs[2] := TRUE;
+		GVL_IO.arrDOs[3] := FALSE;
+		GVL_IO.arrDOs[4] := FALSE;
+		
+		TON_STEP(IN:= TRUE, PT:= T#1S);
+		
+		IF TON_STEP.Q THEN
+			TON_STEP(IN:= FALSE);
+			iState := 30;
+		END_IF
+
+	30: // Sequential Step
+		GVL_IO.arrDOs[1] := FALSE;
+		GVL_IO.arrDOs[2] := FALSE;
+		GVL_IO.arrDOs[3] := TRUE;
+		GVL_IO.arrDOs[4] := FALSE;
+		
+		TON_STEP(IN:= TRUE, PT:= T#1S);
+		
+		IF TON_STEP.Q THEN
+			TON_STEP(IN:= FALSE);
+			iState := 35;
+		END_IF
+
+	35: // Sequential Step
+		GVL_IO.arrDOs[1] := FALSE;
+		GVL_IO.arrDOs[2] := FALSE;
+		GVL_IO.arrDOs[3] := FALSE;
+		GVL_IO.arrDOs[4] := TRUE;
+		
+		TON_STEP(IN:= TRUE, PT:= T#1S);
+		
+		IF TON_STEP.Q THEN
+			TON_STEP(IN:= FALSE);
+			iState := 0;
+		END_IF	
+END_CASE]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

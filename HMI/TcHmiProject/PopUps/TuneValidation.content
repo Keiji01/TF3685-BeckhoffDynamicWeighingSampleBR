@@ -1,0 +1,47 @@
+<div id="TuneValidation" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-width-mode="Content" data-tchmi-height-mode="Content">
+
+<div id="ParametersContainer_1" data-tchmi-type="TcHmi.Controls.System.TcHmiContainer" data-tchmi-height="311" data-tchmi-height-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="239" data-tchmi-width-unit="px">
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+<div id="TcHmiTextblock_24" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="61" data-tchmi-height-unit="px" data-tchmi-left="15" data-tchmi-left-unit="px" data-tchmi-text="Validation Parameters:" data-tchmi-top="18" data-tchmi-top-unit="px" data-tchmi-width="208" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="26" data-tchmi-text-horizontal-alignment="Center" data-tchmi-text-vertical-alignment="Center">
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "rgba(93, 107, 153, 1)"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+{
+  "color": "rgba(255, 255, 255, 1)"
+}
+</script>
+</div>
+<div id="TcHmiTextblock_25" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-text="Window Lenght:" data-tchmi-top="93" data-tchmi-top-unit="px" data-tchmi-width="108" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="12" data-tchmi-text-horizontal-alignment="Right" data-tchmi-text-vertical-alignment="Bottom">
+</div>
+<div id="TcHmiTextblock_26" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-text="Validation Samples:" data-tchmi-top="129" data-tchmi-top-unit="px" data-tchmi-width="108" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="12" data-tchmi-text-horizontal-alignment="Right" data-tchmi-text-vertical-alignment="Bottom">
+</div>
+<div id="TcHmiTextblock_27" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-text="Thresold Weight:" data-tchmi-top="165" data-tchmi-top-unit="px" data-tchmi-width="108" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="12" data-tchmi-text-horizontal-alignment="Right" data-tchmi-text-vertical-alignment="Bottom">
+</div>
+<div id="TcHmiTextblock_28" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-text="Max Weight Deviation:" data-tchmi-top="202" data-tchmi-top-unit="px" data-tchmi-width="108" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="12" data-tchmi-text-horizontal-alignment="Right" data-tchmi-text-vertical-alignment="Bottom">
+</div>
+<div id="TcHmiTextblock_29" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-text="Max Std:" data-tchmi-top="239" data-tchmi-top-unit="px" data-tchmi-width="108" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="12" data-tchmi-text-horizontal-alignment="Right" data-tchmi-text-vertical-alignment="Bottom">
+</div>
+<div id="TcHmiTextblock_30" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="5" data-tchmi-left-unit="px" data-tchmi-text="Relative Weigh Limit:" data-tchmi-top="275" data-tchmi-top-unit="px" data-tchmi-width="108" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-text-font-size="12" data-tchmi-text-horizontal-alignment="Right" data-tchmi-text-vertical-alignment="Bottom">
+</div>
+<div id="FilterNumWithKb_2" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="30" data-tchmi-height-unit="px" data-tchmi-left="123" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/FilterNumWithKb.usercontrol" data-tchmi-top="93" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-number="%s%ADS.PLC1.GVL_WEIGHING_HMI.nWindowLenght%/s%" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_3%/ctrl%">
+</div>
+<div id="FilterNumWithKb_3" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="30" data-tchmi-height-unit="px" data-tchmi-left="123" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/FilterNumWithKb.usercontrol" data-tchmi-top="129" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-number="%s%ADS.PLC1.GVL_WEIGHING_HMI.nValidationSamplesValidation%/s%" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_3%/ctrl%">
+</div>
+<div id="FilterNumWithKb_4" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="30" data-tchmi-height-unit="px" data-tchmi-left="123" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/FilterNumWithKb.usercontrol" data-tchmi-top="165" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-number="%s%ADS.PLC1.GVL_WEIGHING_HMI.fThresholdWeightValidation%/s%" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_3%/ctrl%">
+</div>
+<div id="FilterNumWithKb_5" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="30" data-tchmi-height-unit="px" data-tchmi-left="123" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/FilterNumWithKb.usercontrol" data-tchmi-top="201" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_3%/ctrl%" data-tchmi-number="%s%ADS.PLC1.GVL_WEIGHING_HMI.fMaxWeightDeviationValidation%/s%">
+</div>
+<div id="FilterNumWithKb_6" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="30" data-tchmi-height-unit="px" data-tchmi-left="123" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/FilterNumWithKb.usercontrol" data-tchmi-top="238" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-number="%s%ADS.PLC1.GVL_WEIGHING_HMI.fMaxStdValidation%/s%" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_3%/ctrl%">
+</div>
+<div id="FilterNumWithKb_7" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="30" data-tchmi-height-unit="px" data-tchmi-left="123" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/FilterNumWithKb.usercontrol" data-tchmi-top="275" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-number="%s%ADS.PLC1.GVL_WEIGHING_HMI.fRelativeWeightLimit%/s%" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_3%/ctrl%">
+</div>
+</div>
+</div>

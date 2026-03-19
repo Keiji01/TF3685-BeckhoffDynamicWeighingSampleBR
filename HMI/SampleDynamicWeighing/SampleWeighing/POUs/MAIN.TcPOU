@@ -1,0 +1,140 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.17">
+  <POU Name="MAIN" Id="{7f809191-5d17-404c-9537-cb4089915ce0}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+	// Test signal generation
+	fRawAmplitudeSignal : LREAL := 1000;
+	fAbsoluteNoise : LREAL := 200;
+	fFrequency : LREAL := 1; 			// Hz		
+	fSamplingRate : LREAL := TO_LREAL(cSamplingRate);
+	fbSignal : FB_FunctionGenerator;
+	
+	aRawInput : ARRAY[1..cOversamples] OF LREAL;
+	aRawInputNoise : ARRAY[1..cOversamples] OF LREAL;	
+	aRawTeste	 : ARRAY[1..cOversamples] OF LREAL;
+	
+	// Error handling
+	nCountErrors : UDINT;
+	nEventId : UDINT;
+	sEventClassName : T_MaxString;
+	sSourcePath : T_MaxString;
+	eSeverity : TcEventSeverity;
+	
+	// Weighing
+	fbDynamicWeighing : FB_DynamicWeighing;	
+	
+	//Slope
+	bActivateSlope : BOOL;
+	fDeltaWeight : LREAL;
+	bAddWeight: BOOL;
+	fbUPS: FB_S_UPS_BAPI;
+END_VAR]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[// Generate inputs for simulation
+GenerateInputs();
+
+//Increase the weight continuously.
+IF bActivateSlope THEN
+	AddSlope();
+END_IF
+
+//Increase the weight once
+IF bAddWeight THEN
+	AddWeight();
+	bAddWeight := FALSE;
+END_IF
+
+// Call weighing FB
+// fbDynamicWeighing(aInput := aRawInputNoise);
+aRawTeste[1] := GVL_IO.EL3356_RawInput;
+fbDynamicWeighing(aInput := aRawTeste);
+
+
+
+// Error handling
+IF fbDynamicWeighing.ipResultMessage <> 0 THEN	
+	nEventId := fbDynamicWeighing.ipResultMessage.nEventId;
+	sSourcePath := fbDynamicWeighing.ipResultMessage.ipSourceInfo.sName;
+	eSeverity := fbDynamicWeighing.ipResultMessage.eSeverity;	
+	fbDynamicWeighing.ipResultMessage.RequestEventClassName(1033, sEventClassName, SIZEOF(sEventClassName));
+END_IF
+
+IF fbDynamicWeighing.bError THEN
+	nCountErrors := nCountErrors + 1;
+END_IF
+
+(* Light Test *)
+P_LightTest();
+
+(* HMI *)
+P_HMI();
+
+(* UPS *)
+fbUPS(
+	sNetID:= '', 
+	iPLCPort:= 851, 
+	tTimeout:= , 
+	eUpsMode:= , 
+	ePersistentMode:= , 
+	tRecoverTime:= , 
+	bPowerFailDetect=> , 
+	eState=> , 
+	nCapacity=> , 
+	bBusy=> , 
+	bError=> , 
+	nErrID=> );]]></ST>
+    </Implementation>
+    <Method Name="AddSlope" Id="{ee9128aa-88b8-4ea6-8dbe-a6fc1a70e11f}">
+      <Declaration><![CDATA[METHOD AddSlope : BOOL
+VAR_INPUT
+END_VAR
+VAR
+	idx : UINT;
+	fSlope: LREAL := 0.2;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fDeltaWeight := fDeltaWeight + fSlope;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="AddWeight" Id="{281386f3-5877-4770-91fb-2d31972a8c9e}">
+      <Declaration><![CDATA[METHOD AddWeight : BOOL
+VAR_INPUT
+END_VAR
+VAR
+	idx : UINT;
+	fAddWeight: LREAL := 100;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fDeltaWeight := fDeltaWeight + fAddWeight;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="GenerateInputs" Id="{20680fc2-7f8f-4e9c-8cfa-f3b28e78bb9c}">
+      <Declaration><![CDATA[METHOD GenerateInputs : BOOL
+VAR_INPUT
+END_VAR
+VAR
+	idx : UINT;
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[fbSignal(				
+	fSamplingRate := fSamplingRate,
+	nOversamples := cOversamples,
+	fFrequency := fFrequency,
+	fAmplitude := 2.0 * fRawAmplitudeSignal,
+	eFunction := E_FunctionType.eTrapezoid,							
+	aSignal => aRawInput);
+
+
+FOR idx := 1 TO cOversamples DO
+	aRawInput[idx] := aRawInput[idx] + fDeltaWeight;
+END_FOR		 
+
+MEMCPY(ADR(aRawInputNoise),ADR(aRawInput),SIZEOF(aRawInputNoise));
+fbSignal.AddAbsoluteNoise(fAbsoluteNoise, aRawInputNoise);]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

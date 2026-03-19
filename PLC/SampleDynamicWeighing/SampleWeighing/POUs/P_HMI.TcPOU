@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.17">
+  <POU Name="P_HMI" Id="{23683a70-86f5-4b64-ba26-edc9c2b44b03}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_HMI
+VAR
+	fDelta: LREAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(* Actual Validation Values on FB_WEIGHING Block*)
+
+GVL_WEIGHING_HMI.nActualWindowLenght 					 	:= MAIN.fbDynamicWeighing.stParamsWeighing.nWindowLength;
+
+GVL_WEIGHING_HMI.nActualWindowLenght 					 	:= MAIN.fbDynamicWeighing.nActualWindowLenght;
+GVL_WEIGHING_HMI.nActualValidationSamplesValidation		 	:= MAIN.fbDynamicWeighing.nActualValidationSamplesValidation;
+GVL_WEIGHING_HMI.fActualThresholdWeightValidation 		 	:= MAIN.fbDynamicWeighing.fActualThresholdWeightValidation;
+GVL_WEIGHING_HMI.fActualMaxStdValidation					:= MAIN.fbDynamicWeighing.fActualMaxStdValidation;
+GVL_WEIGHING_HMI.fActualMaxWeightDeviationValidation		:= MAIN.fbDynamicWeighing.fActualMaxWeightDeviationValidation;
+GVL_WEIGHING_HMI.fActualRelativeWeightLimit					:= MAIN.fbDynamicWeighing.fActualRelativeWeightLimit;
+
+GVL_WEIGHING_HMI.fWeight 									:= MAIN.fbDynamicWeighing.fWeight;
+GVL_WEIGHING_HMI.fLastWeight 								:= MAIN.fbDynamicWeighing.fLastWeight;
+GVL_WEIGHING_HMI.fStd 										:= MAIN.fbDynamicWeighing.fStd;
+GVL_WEIGHING_HMI.fLastStd 									:= MAIN.fbDynamicWeighing.fLastStd;
+
+
+(* Booleans *)
+
+GVL_WEIGHING_HMI.bValidMeasurement 	:= MAIN.fbDynamicWeighing.bValidMeasurement;
+GVL_WEIGHING_HMI.bNewResult			:= MAIN.fbDynamicWeighing.bNewResult;
+
+(* Auto Reset Reconfigure Bits *)
+IF GVL_WEIGHING_HMI.bReconfigureWeighing THEN
+	GVL_WEIGHING_HMI.bReconfigureWeighing := FALSE;
+END_IF
+
+
+(* Bit for Criterias Management *)
+IF MAIN.fbDynamicWeighing.fWeight > MAIN.fbDynamicWeighing.fActualThresholdWeightValidation THEN
+	GVL_WEIGHING_HMI.bCriteria1 := TRUE;
+	fDelta := MAIN.fbDynamicWeighing.fMax - MAIN.fbDynamicWeighing.fMin;	
+	IF MAIN.fbDynamicWeighing.fMax - MAIN.fbDynamicWeighing.fMin 
+		< MAIN.fbDynamicWeighing.fActualMaxWeightDeviationValidation THEN
+			GVL_WEIGHING_HMI.bCriteria2 := TRUE;
+		IF MAIN.fbDynamicWeighing.fStd < MAIN.fbDynamicWeighing.fActualMaxStdValidation THEN
+			GVL_WEIGHING_HMI.bCriteria3 := TRUE;
+		END_IF
+	END_IF
+ELSE (* Reset everytime weight is < than threshold *)
+	GVL_WEIGHING_HMI.bCriteria1 := FALSE;
+	GVL_WEIGHING_HMI.bCriteria2 := FALSE;
+	GVL_WEIGHING_HMI.bCriteria3	:= FALSE;
+END_IF
+]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,29 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "definitions": {
+    "UserControl1": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UC\\UserControl1.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/UserControl1"
+    },
+    "FilterNumWithKb": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UC\\FilterNumWithKb.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/FilterNumWithKb"
+    },
+    "PTn": {
+      "frameworkControlNamespace": "TcHmi.Controls.Beckhoff",
+      "frameworkControlType": "TcHmi.Controls.System.TcHmiUserControl",
+      "frameworkInstanceOf": "TcHmi.Controls.System.TcHmiControl",
+      "frameworkUserControlConfig": "UC\\PTn.usercontrol.json",
+      "type": "object",
+      "id": "tchmi:project#/definitions/PTn"
+    }
+  }
+}

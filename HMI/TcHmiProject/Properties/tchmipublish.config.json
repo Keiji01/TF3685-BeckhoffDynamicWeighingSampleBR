@@ -1,0 +1,60 @@
+[
+  {
+    "serverExtensions": [
+      {
+        "publishServerExtension": true,
+        "name": "ADS"
+      },
+      {
+        "publishServerExtension": true,
+        "name": "TcHmiEcDiagnostics"
+      },
+      {
+        "publishServerExtension": true,
+        "name": "TcHmiLua"
+      },
+      {
+        "publishServerExtension": true,
+        "name": "TcHmiScope"
+      },
+      {
+        "publishServerExtension": true,
+        "name": "TcHmiSqliteLogger"
+      },
+      {
+        "publishServerExtension": true,
+        "name": "TcHmiSrv"
+      },
+      {
+        "publishServerExtension": true,
+        "name": "TcHmiUserManagement"
+      }
+    ],
+    "profileName": "PLC1",
+    "publishMode": "TcHmi",
+    "targetDirectory": "",
+    "deleteAllFilesBeforePublish": true,
+    "deleteExtensionDataBeforePublish": true,
+    "alwaysPublishLocalServerConfiguration": true,
+    "temporaryPublishWithoutServerConfiguration": false,
+    "abortOnErrors": false,
+    "createPublishLog": true,
+    "salt": "a74bd8d62ef348c0b381b93e3b5ef029",
+    "encryptedTcHmiServerPassword": "EMKIuM96rMYN3Tl0KO4DSg==",
+    "tcHmiServerHost": "192.168.137.10",
+    "tcHmiServerPort": "2020",
+    "uploadTimeout": "60",
+    "connectionTimeout": "5",
+    "requestTimeout": "60",
+    "extensionStartupTimeout": "120",
+    "clientCertificateCN": "",
+    "tcHmiUseTLS": true,
+    "useClientCertificate": false,
+    "launchBrowserAfterPublish": true,
+    "createVirtualDirectoriesOnTargetSystem": true,
+    "tcHmiServerUserName": "__SystemAdministrator",
+    "tcHmiDestinationUrl": "https://192.168.137.10:2020/",
+    "publishConfiguration": "remote",
+    "tcHmiIgnoreCertificateErrors": true
+  }
+]

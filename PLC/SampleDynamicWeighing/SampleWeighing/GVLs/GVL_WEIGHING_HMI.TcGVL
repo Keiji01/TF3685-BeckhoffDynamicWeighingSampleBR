@@ -1,0 +1,177 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.17">
+  <GVL Name="GVL_WEIGHING_HMI" Id="{7a43982b-e959-4661-b7b1-3e964388dcd4}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL PERSISTENT
+	(* Combo Filter Cfg *)
+	nFilterOrder 		: UINT := 6;
+	rCutOff		 		: REAL	:= 10.0;
+	cSamplingRate		: UINT := 100 * cOversamples;	// samplerate
+	nSamplesToFilter	: UINT := 200;
+	bResetFilter		: BOOL;
+	fNotchFrequency		: LREAL;
+	
+	(* Scaling Params *)
+	fRawLow 				: REAL := 0.0;
+	fReferenceLow 			: REAL := 0.0;
+	fRawHigh 				: REAL := 1000.0;
+	fReferenceHigh 			: REAL := 100.0;
+	nNumCalibrationSamples 	: UDINT := 100;
+	
+	(* Weighing Params *)
+	nWindowLenght 					: UDINT := 100;
+	
+	nValidationSamplesValidation	: UDINT := 100;
+	fThresholdWeightValidation 		: LREAL := 20.0;
+	fMaxStdValidation				: LREAL := 5.0;
+	fMaxWeightDeviationValidation	: LREAL := 0.0;
+	fRelativeWeightLimit			: LREAL := 0.0;
+	fActualRelativeWeightLimit		: LREAL := 0.0;
+	
+	
+	nValidationSamplesAutoTare		: UDINT := 100;
+	fThresholdWeightAutoTare 		: REAL := 10.0;
+	fMaxStdAutoTare					: LREAL := 1.0;
+	fMaxWeightDeviationAutoTare		: LREAL := 0.0;
+	
+		
+	(* Booleans to Reconfigure Filters By IHM *)
+	bReconfigureFilter 		: BOOL;
+	bReconfigureWeighing 	: BOOL;
+	
+	(* Calibration *)
+	fCalibrateReferenceLow 		: LREAL := 0;
+	fCalibrateReferenceHigh 	: LREAL := 1000;
+	bCalibrateReferenceLow 		: BOOL := FALSE;
+	bCalibrateReferenceHigh 	: BOOL := FALSE;
+	bApplyCalibration 			: BOOL := FALSE;
+	bAcceptCalibration 			: BOOL := TRUE;
+	
+	(* Tare *)	
+	bTare : BOOL := FALSE;
+	fMaxTotalTareLimit : LREAL := 40.0; // set error if total taring amount exceeds the limit
+	eAutoTareType : E_WG_AutoTareType := E_WG_AutoTareType.eContinously;
+	nNumTareSamples 		: UDINT := 100;
+	
+	(* Filters Cfg *)	
+	
+	EFilter1			: E_FilterType;
+	EFilter2			: E_FilterType;
+	EFilter3			: E_FilterType;
+	EFilter4			: E_FilterType;
+	EFilter5			: E_FilterType;
+	
+	(* Filter 1 *)
+	fc1				 	: LREAL := 3; // Cut Frequency in Hz
+	Tfc1			 	: LREAL := (1.0 / (2.0 * PI * fc1)) / SQRT(EXPT(2.0, 1.0 / 1) - 1.0);
+	nGainPTn1			: UINT := 1;
+	nOrderPTn1			: UINT := 1;
+	fSamplingRatePTn1	: UINT := 1000;
+	bReconfigurePTn1	: BOOL;
+	
+	STFilter1_PTn		: ST_FTR_PTn := (fKp:= 1,
+										 fT1 := Tfc1,
+										 nOrder := nOrderPTn1,
+										 fSamplingRate := fSamplingRatePTn1,
+										 nOversamples:= 1,
+										 nChannels := 1);
+	
+	fbFilterPTn1 : FB_FTR_PTn := (stConfig:= STFilter1_PTn);
+	
+	(* Filter 2 *)
+	fc2                  : LREAL := 3;
+	Tfc2                 : LREAL := (1.0 / (2.0 * PI * fc2)) / SQRT(EXPT(2.0, 1.0 / 1) - 1.0);
+	nGainPTn2            : UINT := 1;
+	nOrderPTn2           : UINT := 1;
+	fSamplingRatePTn2    : UINT := 1000;
+	bReconfigurePTn2     : BOOL;
+	
+	STFilter2_PTn        : ST_FTR_PTn := (
+							fKp:= 1,
+							fT1 := Tfc2,
+							nOrder := nOrderPTn2,
+							fSamplingRate := fSamplingRatePTn2,
+							nOversamples:= 1,
+							nChannels := 1);
+	
+	fbFilterPTn2 : FB_FTR_PTn := (stConfig:= STFilter2_PTn);
+	
+	(* Filter 3 *)
+	fc3                  : LREAL := 3;
+	Tfc3                 : LREAL := (1.0 / (2.0 * PI * fc3)) / SQRT(EXPT(2.0, 1.0 / 1) - 1.0);
+	nGainPTn3            : UINT := 1;
+	nOrderPTn3           : UINT := 1;
+	fSamplingRatePTn3    : UINT := 1000;
+	bReconfigurePTn3     : BOOL;
+	
+	STFilter3_PTn        : ST_FTR_PTn := (
+							fKp:= 1,
+							fT1 := Tfc3,
+							nOrder := nOrderPTn3,
+							fSamplingRate := fSamplingRatePTn3,
+							nOversamples:= 1,
+							nChannels := 1);
+	
+	fbFilterPTn3 : FB_FTR_PTn := (stConfig:= STFilter3_PTn);
+	
+	(* Filter 4 *)
+	fc4                  : LREAL := 3;
+	Tfc4                 : LREAL := (1.0 / (2.0 * PI * fc4)) / SQRT(EXPT(2.0, 1.0 / 1) - 1.0);
+	nGainPTn4            : UINT := 1;
+	nOrderPTn4           : UINT := 1;
+	fSamplingRatePTn4    : UINT := 1000;
+	bReconfigurePTn4     : BOOL;
+	
+	STFilter4_PTn        : ST_FTR_PTn := (
+							fKp:= 1,
+							fT1 := Tfc4,
+							nOrder := nOrderPTn4,
+							fSamplingRate := fSamplingRatePTn4,
+							nOversamples:= 1,
+							nChannels := 1);
+	
+	fbFilterPTn4 : FB_FTR_PTn := (stConfig:= STFilter4_PTn);
+	
+	(* Filter 5 *)
+	fc5                  : LREAL := 3;
+	Tfc5                 : LREAL := (1.0 / (2.0 * PI * fc5)) / SQRT(EXPT(2.0, 1.0 / 1) - 1.0);
+	nGainPTn5            : UINT := 1;
+	nOrderPTn5           : UINT := 1;
+	fSamplingRatePTn5    : UINT := 1000;
+	bReconfigurePTn5     : BOOL;
+	
+	STFilter5_PTn        : ST_FTR_PTn := (
+							fKp:= 1,
+							fT1 := Tfc5,
+							nOrder := nOrderPTn5,
+							fSamplingRate := fSamplingRatePTn5,
+							nOversamples:= 1,
+							nChannels := 1);
+	
+	fbFilterPTn5 : FB_FTR_PTn := (stConfig:= STFilter5_PTn);
+	
+	(* Mirror actual values to simplify to user *)
+	(* Validation *)
+	nActualWindowLenght 					: UDINT;
+	nActualValidationSamplesValidation		: UDINT;
+	fActualThresholdWeightValidation 		: LREAL;
+	fActualMaxStdValidation					: LREAL;
+	fActualMaxWeightDeviationValidation		: LREAL;
+	
+	(* Last and Actual Weigh Values *)
+	fWeight 		: LREAL;
+	fLastWeight 	: LREAL;
+	fStd 			: LREAL;
+	fLastStd 		: LREAL;
+	
+	(* Lib Booleans *)
+	bValidMeasurement 	: BOOL;
+	bNewResult			: BOOL;
+	bCriteria1			: BOOL;
+	bCriteria2			: BOOL;
+	bCriteria3			: BOOL;
+	
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

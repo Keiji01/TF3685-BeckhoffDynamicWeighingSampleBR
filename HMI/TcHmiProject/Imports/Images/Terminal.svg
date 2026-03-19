@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.4, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Ebene_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="10.525px" height="80px" viewBox="0 0 10.525 80" enable-background="new 0 0 10.525 80" xml:space="preserve">
+<g>
+	<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-16.6074" y1="13.9355" x2="27.1342" y2="66.0647">
+		<stop  offset="0.5" style="stop-color:#EFF1F3"/>
+		<stop  offset="0.9998" style="stop-color:#AEB9C2"/>
+	</linearGradient>
+	<rect fill="url(#SVGID_1_)" width="10.525" height="80"/>
+	<g opacity="0.4">
+		<circle cx="2.9" cy="27.994" r="1.684"/>
+		<circle cx="7.625" cy="27.994" r="1.684"/>
+	</g>
+	<g opacity="0.4">
+		<circle cx="2.9" cy="42.574" r="1.684"/>
+		<circle cx="7.625" cy="42.574" r="1.684"/>
+	</g>
+	<g opacity="0.4">
+		<circle cx="2.9" cy="56.86" r="1.684"/>
+		<circle cx="7.625" cy="56.86" r="1.684"/>
+	</g>
+	<g opacity="0.4">
+		<circle cx="2.9" cy="71.833" r="1.684"/>
+		<circle cx="7.625" cy="71.833" r="1.684"/>
+	</g>
+	<rect x="2.104" y="3.46" opacity="0.4" width="6.316" height="14.309"/>
+</g>
+</svg>

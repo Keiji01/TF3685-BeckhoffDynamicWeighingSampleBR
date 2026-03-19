@@ -1,0 +1,240 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.17">
+  <POU Name="FB_DynamicWeighing" Id="{e36022e2-584d-45fe-972e-e8dc27e347b5}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_DynamicWeighing
+VAR_INPUT
+	aInput : ARRAY[1..cOversamples] OF LREAL;
+	
+	// Filter
+	stParamsComboFilter 		: ST_WG_ComboFilter;
+	
+	// Scaling
+	stParamsScale 				: ST_WG_Scaling;
+	
+	// Weighing
+	stParamsWeighing 			: ST_WG_Weighing;
+	
+	// Control
+	// Reconfigure
+	bReconfigureFilter 			: BOOL := FALSE;
+	bReconfigureWeighing 		: BOOL := FALSE;
+	
+	// Calibration
+	nNumCalibrationSamples 		: UDINT := 100;
+	fCalibrateReferenceLow 		: LREAL := 417;
+	fCalibrateReferenceHigh 	: LREAL := 1215;
+	bCalibrateReferenceLow 		: BOOL 	:= FALSE;		// e.g. ref: 417	| raw: 175000
+	bCalibrateReferenceHigh 	: BOOL 	:= FALSE;	// e.g. ref: 1215	| raw: 525000	
+	bApplyCalibration 			: BOOL 	:= FALSE;
+	bAcceptCalibration 			: BOOL 	:= TRUE;
+	
+	// Tare
+	nNumTareSamples 			: UDINT := 100;
+	bTare 						: BOOL 	:= FALSE;
+	fMaxTotalTareLimit 			: LREAL := 40.0; // set error if total taring amount exceeds the limit
+	eAutoTareType 				: E_WG_AutoTareType := E_WG_AutoTareType.eContinously;
+	
+	
+	bDisableFilter				: BOOL;
+END_VAR
+VAR_OUTPUT
+	bError 						: BOOL;
+	ipResultMessage 			: I_TcMessage;
+	bNewResult 					: BOOL;	
+	bValidMeasurement 			: BOOL;	
+	fWeight 					: LREAL;
+	fLastWeight 				: LREAL;
+	fStd 						: LREAL;
+	fLastStd 					: LREAL;
+	
+	(* Extra Diag Values to Show on HMI *)
+	(* Validation Values *)
+	nActualWindowLenght					: UDINT;
+	nActualValidationSamplesValidation	: UDINT;
+	fActualThresholdWeightValidation 	: LREAL;
+	fActualMaxStdValidation			    : LREAL;
+	fActualMaxWeightDeviationValidation : LREAL;
+	fActualRelativeWeightLimit			: LREAL;	
+	
+	fMax : LREAL;
+	fMin : LREAL;
+END_VAR
+VAR
+	fbComboFilter 				: FB_WG_ComboFilter	:= (stConfig := stParamsComboFilter);
+	fbScale 					: FB_WG_Scaling		:= (stConfig := stParamsScale, eTraceLevel:=TcEventSeverity.Info);
+	fbWeighing 					: FB_WG_Weighing	:= (stConfig := stParamsWeighing);
+	//					: FB_FTR_PTn(stConfig:= );
+	
+	
+	
+	// Helper
+	aOutFilter 					: ARRAY[1..cOversamples] OF LREAL; // Stage1 PTn filter, Stage2 MovAvg Filter
+	aOutScaling 				: ARRAY[1..cOversamples] OF LREAL; // Scaling
+	reconfigureFilter 			: R_TRIG;
+	reconfigureWeighing 		: R_TRIG;
+	calibrateReferenceLow 		: R_TRIG;
+	calibrateReferenceHigh 		: R_TRIG;
+	applyCalibration 			: R_TRIG;
+	tare 						: R_TRIG;
+	
+
+	
+	//UserMessage
+	fbCustomMessage 	: FB_TcMessage;
+	bInit				: BOOL;
+	bSucceed			: BOOL;
+	
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[bError := FALSE;
+CommandTrigger();
+// Configure the FB_WG_Scaling block
+
+IF NOT bInit THEN
+	bSucceed := fbScale.Configure(stConfig:=stParamsScale);	
+	bInit := TRUE;
+END_IF
+
+// Reconfigure
+IF reconfigureFilter.Q AND_THEN NOT fbComboFilter.Configure(stParamsComboFilter) THEN
+	SetError(fbComboFilter);
+END_IF
+
+IF reconfigureWeighing.Q AND_THEN NOT fbWeighing.Configure(stParamsWeighing) THEN
+	SetError(fbWeighing);
+END_IF
+
+// Calibration	 
+IF calibrateReferenceLow.Q AND_THEN NOT fbScale.CalibrateRefLow(nNumCalibrationSamples, fCalibrateReferenceLow) THEN
+	SetError(fbScale);
+END_IF
+
+IF calibrateReferenceHigh.Q AND_THEN NOT fbScale.CalibrateRefHigh(nNumCalibrationSamples, fCalibrateReferenceHigh) THEN
+	SetError(fbScale);
+END_IF
+
+IF applyCalibration.Q AND_THEN NOT fbScale.ApplyCalibration(bAcceptCalibration) THEN
+	SetError(fbScale);
+END_IF
+
+// Tare
+IF tare.Q AND_THEN NOT fbScale.Tare(nNumTareSamples) THEN
+	SetError(fbScale);
+END_IF
+
+
+// Perform taring process continously if fbWeighing.fAutoTareOffset is not zero
+// Careful: ST_WG_Weighing_AutoTare.nValidationSamples should be large enough, to find the best tare weight.
+// Execute AutoTare
+IF NOT fbWeighing.AutoTare(fbScale, eAutoTareType)THEN
+	SetError(fbWeighing);
+END_IF
+
+IF ABS(fbScale.fCurrentTareOffset - fbWeighing.fAutoTareOffset) > fMaxTotalTareLimit THEN
+	SetCustomWarning(fbCustomMessage, 'Total taring amount exceeds the limit. Please check the weighing machine!');
+END_IF
+
+
+// Execute weighing
+IF NOT bDisableFilter THEN
+	IF NOT fbComboFilter.Call(ADR(aInput), SIZEOF(aInput), ADR(aOutFilter), SIZEOF(aOutFilter)) THEN
+		SetError(fbComboFilter);
+	END_IF
+ELSE
+	aOutFilter := aInput;
+END_IF
+
+IF NOT fbScale.Call(ADR(aOutFilter), SIZEOF(aOutFilter), ADR(aOutScaling), SIZEOF(aOutScaling)) THEN
+	SetError(fbScale);
+END_IF
+
+IF NOT fbWeighing.Call(ADR(aOutScaling), SIZEOF(aOutScaling)) THEN
+	SetError(fbWeighing);
+END_IF
+
+// Assign results
+AssignResults();
+
+// Assign diag values
+AssignDiagValues();]]></ST>
+    </Implementation>
+    <Method Name="AssignDiagValues" Id="{a05e5f61-5c3d-4095-b20b-197491ea6dca}">
+      <Declaration><![CDATA[METHOD AssignDiagValues : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[(* Actual fbWeighing Block Cfg *)
+nActualWindowLenght 					:= fbWeighing.stConfig.nWindowLength;
+nActualValidationSamplesValidation		:= fbWeighing.stConfig.Validation.nValidationSamples;
+fActualThresholdWeightValidation 		:= fbWeighing.stConfig.Validation.fThresholdWeight;
+fActualMaxStdValidation			    	:= fbWeighing.stConfig.Validation.fMaxStd;
+fActualMaxWeightDeviationValidation 	:= fbWeighing.stConfig.Validation.fMaxWeightDeviation;
+fActualRelativeWeightLimit				:= fbWeighing.stConfig.Validation.fRelativeWeightLimit;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="AssignResults" Id="{5338b36c-b8c1-43fa-b63f-6f36aa7572dc}">
+      <Declaration><![CDATA[METHOD AssignResults : BOOL
+VAR_INPUT
+END_VAR
+
+VAR_OUTPUT
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[bNewResult := fbWeighing.bNewResult;	
+bValidMeasurement := fbWeighing.bValidMeasurement;	
+fWeight := fbWeighing.fWeight;
+fLastWeight := fbWeighing.fLastWeight;
+fStd := fbWeighing.fStd;
+fLastStd := fbWeighing.fLastStd;
+
+fMax := fbWeighing.fMax;
+fMin := fbWeighing.fMin;
+]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="CommandTrigger" Id="{9433b606-638b-4587-9c83-7d2d5401227f}">
+      <Declaration><![CDATA[METHOD CommandTrigger : BOOL
+VAR_INPUT
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[reconfigureFilter(CLK:=bReconfigureFilter OR GVL_WEIGHING_HMI.bReconfigureFilter);
+reconfigureWeighing(CLK:=bReconfigureWeighing OR GVL_WEIGHING_HMI.bReconfigureWeighing);
+calibrateReferenceLow(CLK:=bCalibrateReferenceLow OR GVL_WEIGHING_HMI.bCalibrateReferenceLow);
+calibrateReferenceHigh(CLK:=bCalibrateReferenceHigh OR GVL_WEIGHING_HMI.bCalibrateReferenceHigh);
+applyCalibration(CLK:=bApplyCalibration OR GVL_WEIGHING_HMI.bApplyCalibration);
+tare(CLK:=bTare);]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetCustomWarning" Id="{a2106cc0-f7c6-4d66-842d-6668ef5cb125}">
+      <Declaration><![CDATA[METHOD SetCustomWarning : BOOL
+VAR_INPUT
+	fb : REFERENCE TO FB_TcMessage;
+	sText : STRING;
+END_VAR
+VAR
+END_VAR]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^.bError := TRUE;
+fb.CreateEx(TC_EVENTS.TcWeighingEventClass.Warning_InvalidThreshold,0);
+fb.ipArguments.Clear();
+fb.ipArguments.AddString(sText);
+fb.Send(0);
+THIS^.ipResultMessage := fb;]]></ST>
+      </Implementation>
+    </Method>
+    <Method Name="SetError" Id="{505b0742-9aaf-4cd9-b34c-4a783691ae12}">
+      <Declaration><![CDATA[METHOD SetError : BOOL
+VAR_INPUT
+	fb : REFERENCE TO _FB_WG_BasicImplementationAlgorithm;
+END_VAR
+]]></Declaration>
+      <Implementation>
+        <ST><![CDATA[THIS^.bError := fb.bError;
+THIS^.ipResultMessage := fb.ipResultMessage;]]></ST>
+      </Implementation>
+    </Method>
+  </POU>
+</TcPlcObject>

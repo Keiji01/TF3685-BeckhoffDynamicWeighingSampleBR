@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.17">
+  <GVL Name="GVL_IO" Id="{40eec583-8dde-47d2-ad44-37ec33bb6508}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL
+	arrDIs				 		AT %I*	: ARRAY[1..16] OF BOOL;
+	arrDOs			 			AT %Q*	: ARRAY[1..8] OF BOOL;
+	arrAIs						AT %I*	: ARRAY[1..2] OF INT;
+	arrAOs						AT %Q*	: ARRAY[1..2] OF INT;
+	EL3356_RawInput 			AT %I*	: REAL;
+	EL3356_SampleMode			AT %Q*	: BOOL := FALSE;
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

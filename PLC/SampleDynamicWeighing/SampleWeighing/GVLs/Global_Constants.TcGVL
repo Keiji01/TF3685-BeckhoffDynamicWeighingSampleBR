@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.17">
+  <GVL Name="Global_Constants" Id="{9757b3a2-696e-42e1-9d86-e6fac84a7d73}">
+    <Declaration><![CDATA[VAR_GLOBAL CONSTANT
+	cOversamples	: UINT := 1;					// number of oversamples
+	cSamplingRate	: UINT := 1000 * cOversamples;	// samplerate
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

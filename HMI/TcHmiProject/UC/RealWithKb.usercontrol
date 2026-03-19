@@ -1,0 +1,51 @@
+<div id="FilterNumWithKb_1" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControl" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="30" data-tchmi-width-unit="px" data-tchmi-height-unit="px" data-tchmi-creator-viewport-width="500" data-tchmi-creator-viewport-height="500">
+
+<div id="TcHmiNumericInput_8" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiNumericInput" data-tchmi-auto-focus-out="True" data-tchmi-decimal-digits="2" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-reset-to-last-valid-value="True" data-tchmi-top="0" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-value="%pp%Number|BindingMode=TwoWay|BindingEvent=onUserInteractionFinished%/pp%">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
+[
+  {
+    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onFocusIn",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%pp%KbObj::Visibility%/pp%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/String",
+          "value": "Visible"
+        },
+        "asyncWait": true
+      }
+    ]
+  },
+  {
+    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onUserInteractionFinished",
+    "actions": [
+      {
+        "objectType": "WriteToSymbol",
+        "active": true,
+        "symbolExpression": "%pp%KbObj::Visibility%/pp%",
+        "value": {
+          "objectType": "StaticValue",
+          "valueType": "tchmi:general#/definitions/String",
+          "value": "Collapsed"
+        },
+        "asyncWait": true
+      }
+    ]
+  }
+]
+</script>
+</div>
+</div>

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.17">
+  <GVL Name="GVL_WEIGHING_IHM" Id="{7a43982b-e959-4661-b7b1-3e964388dcd4}">
+    <Declaration><![CDATA[{attribute 'qualified_only'}
+VAR_GLOBAL PERSISTENT
+	(* Combo Filter Cfg *)
+	nFilterOrder 		: UINT := 6;
+	rCutOff		 		: REAL	:= 10.0;
+	cSamplingRate		: UINT := 100 * cOversamples;	// samplerate
+	nSamplesToFilter	: UINT := 200;
+	bResetFilter		: BOOL;
+	
+	(* Scaling Params *)
+	fRawLow 		: REAL := 0.0;
+	fReferenceLow 	: REAL := 0.0;
+	fRawHigh 		: REAL := 1000.0;
+	fReferenceHigh 	: REAL := 100.0;
+	nNumCalibrationSamples : UDINT := 100;
+	nNumTareSamples : UDINT := 100;
+	
+	(* Weighing Params *)
+	nWindowLenght 					: UDINT := 100;
+	
+	nValidationSamplesValidation	: UDINT := 100;
+	fThresholdWeightValidation 		: REAL := 20.0;
+	fMaxStdValidation				: REAL := 5.0;
+	fMaxWeightDeviationValidation	: REAL := 0.0;
+	
+	nValidationSamplesAutoTare		: UDINT := 100;
+	fThresholdWeightAutoTare 		: REAL := 10.0;
+	fMaxStdAutoTare					: REAL := 1.0;
+	fMaxWeightDeviationAutoTare		: REAL := 0.0;
+	fRelativeWeightLimit			: REAL := 0.0;
+	
+	
+	
+	(* Booleans to Reconfigure Filters By IHM *)
+	bReconfigureFilter 		: BOOL;
+	bReconfigureWeighing 	: BOOL;
+	
+	(* Calibration *)
+	fCalibrateReferenceLow : LREAL := 0;
+	fCalibrateReferenceHigh : LREAL := 1000;
+	bCalibrateReferenceLow : BOOL := FALSE;
+	bCalibrateReferenceHigh : BOOL := FALSE;
+	bApplyCalibration : BOOL := FALSE;
+	bAcceptCalibration : BOOL := TRUE;
+	
+	(* Tare *)	
+	bTare : BOOL := FALSE;
+	fMaxTotalTareLimit : LREAL := 40.0; // set error if total taring amount exceeds the limit
+	eAutoTareType : E_WG_AutoTareType := E_WG_AutoTareType.eContinously;
+	
+END_VAR]]></Declaration>
+  </GVL>
+</TcPlcObject>

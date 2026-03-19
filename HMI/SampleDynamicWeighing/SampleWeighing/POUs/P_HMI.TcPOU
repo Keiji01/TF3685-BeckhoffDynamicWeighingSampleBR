@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.17">
+  <POU Name="P_HMI" Id="{23683a70-86f5-4b64-ba26-edc9c2b44b03}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM P_HMI
+VAR
+	arrGraph 			: ARRAY[1..1, 1..100] OF ST_POINTS;
+	bSystemInit			: BOOL := FALSE;
+	i					: INT;
+	bValidMeasurement	: BOOL;
+	fWeight				: LREAL;
+	fLastWeight			: LREAL;
+	fStd				: LREAL;
+	fLastStd			: LREAL;
+	bNewResult			: BOOL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[(* To simplify dealing with the Weighing Lib, I created this routine to highlight the important variables
+used on the test. Look that maybe it isn't the most optimized way to use the TF3685 lib, 
+but this isn't is our goal here - We're looking for intuitivity*)
+
+(* Scale Values *)
+
+(* Tare *)
+
+(* Last Weight Values to Plot in a Chart *)
+
+IF NOT bSystemInit THEN
+	(* Starting X reference chat *)
+	FOR i:= 1 TO 100 DO
+		arrGraph[1,i].x := i;
+	END_FOR
+END_IF
+
+(* FIFO for graph *)
+FOR i:= 100 TO 2 BY -1 DO
+	arrGraph[1,i].y := arrGraph[1, i-1].y;
+END_FOR
+
+IF MAIN.fbDynamicWeighing.bValidMeasurement THEN
+	arrGraph[1,1].y := MAIN.fbDynamicWeighing.fLastWeight;	
+END_IF
+
+bNewResult 			:= MAIN.fbDynamicWeighing.bNewResult;	
+bValidMeasurement 	:= MAIN.fbDynamicWeighing.bValidMeasurement;	
+fWeight 			:= MAIN.fbDynamicWeighing.fWeight;
+fLastWeight 		:= MAIN.fbDynamicWeighing.fLastWeight;
+fStd 				:= MAIN.fbDynamicWeighing.fStd;
+fLastStd 			:= MAIN.fbDynamicWeighing.fLastStd;]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

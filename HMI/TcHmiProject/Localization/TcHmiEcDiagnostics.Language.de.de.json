@@ -1,0 +1,15 @@
+{
+  "$schema": "./../../Packages/Beckhoff.TwinCAT.HMI.Framework.14.3.360/runtimes/native1.12-tchmi/Schema/LocalizationDescription.Schema.json",
+  "locale": "de",
+  "scope": "Server",
+  "source": "TcHmiEcDiagnostics",
+  "localizedText": {
+    "L_StartPage": "Startseite",
+    "L_Events": "Meldungen",
+    "L_Localization": "Lokalisierung",
+    "L_Theme": "Farbschema",
+    "L_Settings": "Einstellungen",
+    "L_EtherCATDiagnostics": "EtherCAT Diagnostics",
+    "L_ProcessConfiguration": "Process Configuration"
+  }
+}

@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.12">
+  <DUT Name="E_DistributionType" Id="{1b39f8fe-612a-4136-bde0-715b56490972}">
+    <Declaration><![CDATA[TYPE E_DistributionType :
+(
+	eUniform := 0,
+	eNormal,
+	eChi_squared,
+	eExponential,
+	eGamma
+);
+END_TYPE
+]]></Declaration>
+  </DUT>
+</TcPlcObject>

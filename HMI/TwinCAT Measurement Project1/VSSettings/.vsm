@@ -1,0 +1,249 @@
+<Node>
+  <Title>TwinCAT Measurement Project1</Title>
+  <Expanded>False</Expanded>
+  <FileName></FileName>
+  <Children>
+    <Node>
+      <Title>YT Scope Project</Title>
+      <Expanded>True</Expanded>
+      <FileName>C:\Users\lucask\Desktop\TF3685 Weighing Library\HMI\TwinCAT Measurement Project1\YT Scope Project.tcscopex</FileName>
+      <Children>
+        <Node>
+          <Title>DataPool</Title>
+          <Expanded>False</Expanded>
+          <FileName></FileName>
+          <Children>
+            <Node>
+              <Title>fbWeighing.bNewAutoTareResult</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
+              <Title>fbWeighing.fAutoTareOffset</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
+              <Title>MAIN.bAddWeight</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
+              <Title>RMB Value (Real).Value (Real)</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
+              <Title>fbDynamicWeighing.aOutFilter</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
+              <Title>fbDynamicWeighing.aOutScaling</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
+              <Title>MAIN.aRawInput</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
+              <Title>MAIN.aRawInputNoise</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
+              <Title>fbDynamicWeighing.bNewResult</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
+              <Title>fbDynamicWeighing.bValidMeasurement</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
+              <Title>fbDynamicWeighing.fLastStd</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
+              <Title>fbDynamicWeighing.fLastWeight</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
+              <Title>fbDynamicWeighing.fStd</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+            <Node>
+              <Title>fbDynamicWeighing.fWeight</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+          </Children>
+        </Node>
+        <Node>
+          <Title>YT Chart</Title>
+          <Expanded>True</Expanded>
+          <FileName></FileName>
+          <Children>
+            <Node>
+              <Title>Input Signals (Simulated)</Title>
+              <Expanded>True</Expanded>
+              <FileName></FileName>
+              <Children>
+                <Node>
+                  <Title>MAIN.aRawInput</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+                <Node>
+                  <Title>MAIN.aRawInputNoise</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+                <Node>
+                  <Title>fbDynamicWeighing.aOutFilter</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+              </Children>
+            </Node>
+            <Node>
+              <Title>Input Signals (Real)</Title>
+              <Expanded>True</Expanded>
+              <FileName></FileName>
+              <Children>
+                <Node>
+                  <Title>RMB Value (Real).Value (Real)</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+                <Node>
+                  <Title>fbDynamicWeighing.aOutFilter</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+              </Children>
+            </Node>
+            <Node>
+              <Title>Scaling and Library Weigh</Title>
+              <Expanded>True</Expanded>
+              <FileName></FileName>
+              <Children>
+                <Node>
+                  <Title>aOutScaling</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+                <Node>
+                  <Title>fWeight</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+                <Node>
+                  <Title>fLastWeight</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+              </Children>
+            </Node>
+            <Node>
+              <Title>Auxiliar Variables</Title>
+              <Expanded>True</Expanded>
+              <FileName></FileName>
+              <Children>
+                <Node>
+                  <Title>fLastStd</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+                <Node>
+                  <Title>fStd</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+                <Node>
+                  <Title>fbWeighing.fAutoTareOffset</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+              </Children>
+            </Node>
+            <Node>
+              <Title>Booleans </Title>
+              <Expanded>True</Expanded>
+              <FileName></FileName>
+              <Children>
+                <Node>
+                  <Title>bValidMeasurement</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+                <Node>
+                  <Title>bNewResult</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+                <Node>
+                  <Title>fbWeighing.bNewAutoTareResult</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+                <Node>
+                  <Title>MAIN.bAddWeight</Title>
+                  <Expanded>False</Expanded>
+                  <FileName></FileName>
+                  <Children />
+                </Node>
+              </Children>
+            </Node>
+            <Node>
+              <Title>Time Marker</Title>
+              <Expanded>False</Expanded>
+              <FileName></FileName>
+              <Children />
+            </Node>
+          </Children>
+        </Node>
+        <Node>
+          <Title>Trigger</Title>
+          <Expanded>False</Expanded>
+          <FileName></FileName>
+          <Children />
+        </Node>
+      </Children>
+    </Node>
+  </Children>
+</Node>

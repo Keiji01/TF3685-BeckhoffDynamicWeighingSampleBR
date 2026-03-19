@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4026.17">
+  <POU Name="FB_Filter59" Id="{3530d84a-7ce2-4b67-ae1e-0c60be093e50}" SpecialFunc="None">
+    <Declaration><![CDATA[FUNCTION_BLOCK FB_Filter59
+VAR_INPUT
+	rEntrada: REAL;
+END_VAR
+VAR_OUTPUT
+	rSaida: REAL;
+END_VAR
+VAR
+	arCoef_Taps: ARRAY[1..59] OF REAL;
+	arLeitura: ARRAY[1..59] OF REAL;
+	i: INT;
+	rAux: REAL;
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[//Fir6 Kaiser - 59Taps
+
+
+arCoef_Taps[1] := 	1.54135308723898E-002;
+arCoef_Taps[2] := 	1.55675060506758E-002;
+arCoef_Taps[3] := 	1.57169226616965E-002;
+arCoef_Taps[4] := 	1.58616933594655E-002;
+arCoef_Taps[5] := 	1.60017334206282E-002;
+arCoef_Taps[6] := 	1.61369608038471E-002;
+arCoef_Taps[7] := 	1.62672962073415E-002;
+arCoef_Taps[8] :=	1.63926631245363E-002;
+arCoef_Taps[9] :=	1.65129878977796E-002;
+arCoef_Taps[10] :=	1.66281997700857E-002;
+
+arCoef_Taps[11] :=  1.67382309348648E-002;
+arCoef_Taps[12] :=  1.68430165836012E-002;
+arCoef_Taps[13] :=  1.69424949514440E-002;
+arCoef_Taps[14] :=  1.70366073606740E-002;
+arCoef_Taps[15] :=  1.71252982620145E-002;
+arCoef_Taps[16] :=  1.72085152737542E-002;
+arCoef_Taps[17] :=  1.72862092186516E-002;
+arCoef_Taps[18] :=  1.73583341585934E-002;
+arCoef_Taps[19] :=  1.74248474269791E-002;
+arCoef_Taps[20] :=  1.74857096588086E-002;
+
+arCoef_Taps[21] :=  1.75408848184478E-002;
+arCoef_Taps[22] :=  1.75903402250520E-002;
+arCoef_Taps[23] :=  1.76340465756283E-002;
+arCoef_Taps[24] :=  1.76719779657164E-002;
+arCoef_Taps[25] :=  1.77041119076759E-002;
+arCoef_Taps[26] :=  1.77304293465626E-002;
+arCoef_Taps[27] :=  1.77509146735830E-002;
+arCoef_Taps[28] :=  1.77655557371177E-002;
+arCoef_Taps[29] :=  1.77743438513027E-002;
+arCoef_Taps[30] :=  1.77772738021646E-002;
+
+arCoef_Taps[31] :=  1.77743438513027E-002;
+arCoef_Taps[32] :=  1.77655557371177E-002;
+arCoef_Taps[33] :=  1.77509146735830E-002;
+arCoef_Taps[34] :=  1.77304293465626E-002;
+arCoef_Taps[35] :=  1.77041119076759E-002;
+arCoef_Taps[36] :=  1.76719779657164E-002;
+arCoef_Taps[37] :=  1.76340465756283E-002;
+arCoef_Taps[38] :=  1.75903402250520E-002;
+arCoef_Taps[39] :=  1.75408848184478E-002;
+arCoef_Taps[40] :=  1.74857096588086E-002;
+
+arCoef_Taps[41] :=  1.74248474269791E-002;
+arCoef_Taps[42] :=  1.73583341585934E-002;
+arCoef_Taps[43] :=  1.72862092186516E-002;
+arCoef_Taps[44] :=  1.72085152737542E-002;
+arCoef_Taps[45] :=  1.71252982620145E-002;
+arCoef_Taps[46] :=  1.70366073606740E-002;
+arCoef_Taps[47] :=  1.69424949514440E-002;
+arCoef_Taps[48] :=  1.68430165836012E-002;
+arCoef_Taps[49] :=  1.67382309348648E-002;
+arCoef_Taps[50] :=  1.66281997700857E-002;
+
+arCoef_Taps[51] :=  1.65129878977796E-002;
+arCoef_Taps[52] :=  1.63926631245363E-002;
+arCoef_Taps[53] :=  1.62672962073415E-002;
+arCoef_Taps[54] :=  1.61369608038471E-002;
+arCoef_Taps[55] :=  1.60017334206282E-002;
+arCoef_Taps[56] :=  1.58616933594655E-002;
+arCoef_Taps[57] :=  1.57169226616965E-002;
+arCoef_Taps[58] :=  1.55675060506758E-002;
+arCoef_Taps[59] :=  1.54135308723898E-002;
+
+
+rSaida := 0.0;
+FOR i:= 59 TO 2 BY -1 DO
+	arLeitura[i] := arLeitura[i-1];	
+	rAux := arLeitura[i] * arCoef_Taps[i];
+	rSaida := rSaida + rAux;
+END_FOR
+
+arLeitura[1] := rEntrada;
+
+rSaida := rSaida + (arLeitura[1] * arCoef_Taps[1]);]]></ST>
+    </Implementation>
+  </POU>
+</TcPlcObject>

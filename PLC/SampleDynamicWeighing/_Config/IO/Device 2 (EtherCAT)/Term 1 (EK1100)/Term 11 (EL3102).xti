@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<TcSmItem xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2012/07/TcSmProject" TcSmVersion="1.0" TcVersion="3.1.4026.20" ClassName="CFlbTermDef" SubType="9099">
+	<ImageDatas>
+		<ImageData Id="1000">424dd6020000000000003600000028000000100000000e0000000100180000000000a0020000c40e0000c40e00000000000000000000ff00ffff00ffff00ffff00ffff00ffff00ff808080808080808080808080808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c000ffffc0c0c000ffff808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0ff0000c0c0c0ff0000808080ff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffff00ffc0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c00000ffc0c0c00000ff808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0000000c0c0c0000000808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0008000c0c0c0008000808080ff00ffff00ffff00ffff00ffff00ff00ff0000ff0000ff0000ff0000ff0000ff00c0c0c0c0c0c0c0c0c0c0c0c0808080ff00ffff00ffff00ffff00ffff00ff</ImageData>
+	</ImageDatas>
+	<Box Id="11" BoxType="9099" BoxFlags="#x00000020">
+		<Name>__FILENAME__</Name>
+		<ImageId>1000</ImageId>
+		<EtherCAT SlaveType="2" PdiType="#x0005" StateMBoxPolling="true" CycleMBoxPollingTime="0" CoeType="15" FoeType="1" VendorId="#x00000002" ProductCode="#x0c1e3052" InfoDataAddr="true" PortPhys="51" MaxSlotCount="256" MaxSlotGroupCount="1" SlotPdoIncrement="1" SlotIndexIncrement="16" Type="EL3102 2Ch. Ana. Input +/-10V, Diff." Desc="EL3102">
+			<SyncMan>0018f60026000100010000002800ce05f600001826010000</SyncMan>
+			<SyncMan>f618f60022000100020000002800ce05f600f61822010000</SyncMan>
+			<SyncMan>001000002400000003000000000000000000001024010000</SyncMan>
+			<SyncMan>001106002000010004000000000000000000001120010000</SyncMan>
+			<Fmmu>00000000000000000d0800010100000003000000000000000000000000000000</Fmmu>
+			<Fmmu>0000000000000000001100010100000002000000000000000000000000000000</Fmmu>
+			<BootStrapData>0018f400f418f400</BootStrapData>
+			<Pdo Name="Channel 1" Index="#x1a00" Flags="#x0010" SyncMan="3">
+				<ExcludePdo>#x1a10</ExcludePdo>
+				<Entry Name="Status" Index="#x3101" Sub="#x01">
+					<Type>BYTE</Type>
+				</Entry>
+				<Entry Name="Value" Index="#x3101" Sub="#x02" Flags="#x00010000">
+					<Type>INT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="Channel 2" Index="#x1a01" Flags="#x0010" SyncMan="3">
+				<ExcludePdo>#x1a10</ExcludePdo>
+				<Entry Name="Status" Index="#x3102" Sub="#x01">
+					<Type>BYTE</Type>
+				</Entry>
+				<Entry Name="Value" Index="#x3102" Sub="#x02" Flags="#x00010000">
+					<Type>INT</Type>
+				</Entry>
+			</Pdo>
+			<Pdo Name="Channels" Index="#x1a10" Flags="#x0010">
+				<ExcludePdo>#x1a00</ExcludePdo>
+				<ExcludePdo>#x1a01</ExcludePdo>
+				<Entry Name="Value1" Index="#x6401" Sub="#x01" Flags="#x00010000">
+					<Type>INT</Type>
+				</Entry>
+				<Entry Name="Value2" Index="#x6401" Sub="#x02" Flags="#x00010000">
+					<Type>INT</Type>
+				</Entry>
+			</Pdo>
+			<CoeProfile ProfileNo="401"/>
+			<CoeProfile ProfileNo="401"/>
+		</EtherCAT>
+	</Box>
+</TcSmItem>
