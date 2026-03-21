@@ -4,20 +4,30 @@
     <Declaration><![CDATA[PROGRAM P_HMI
 VAR
 	fDelta: LREAL;
+	fbStats: FB_STATS;
+	bZerarGraficoHMI: BOOL;
 END_VAR
 ]]></Declaration>
     <Implementation>
       <ST><![CDATA[(* Actual Validation Values on FB_WEIGHING Block*)
 
-GVL_WEIGHING_HMI.nActualWindowLenght 					 	:= MAIN.fbDynamicWeighing.stParamsWeighing.nWindowLength;
-
 GVL_WEIGHING_HMI.nActualWindowLenght 					 	:= MAIN.fbDynamicWeighing.nActualWindowLenght;
+
+
+(* Validation *)
 GVL_WEIGHING_HMI.nActualValidationSamplesValidation		 	:= MAIN.fbDynamicWeighing.nActualValidationSamplesValidation;
 GVL_WEIGHING_HMI.fActualThresholdWeightValidation 		 	:= MAIN.fbDynamicWeighing.fActualThresholdWeightValidation;
 GVL_WEIGHING_HMI.fActualMaxStdValidation					:= MAIN.fbDynamicWeighing.fActualMaxStdValidation;
 GVL_WEIGHING_HMI.fActualMaxWeightDeviationValidation		:= MAIN.fbDynamicWeighing.fActualMaxWeightDeviationValidation;
 GVL_WEIGHING_HMI.fActualRelativeWeightLimit					:= MAIN.fbDynamicWeighing.fActualRelativeWeightLimit;
 
+(* AutoTare*)
+
+GVL_WEIGHING_HMI.nActualValidationSamplesAutoTare			:= MAIN.fbDynamicWeighing.nActualValidationSamplesAutoTare;
+GVL_WEIGHING_HMI.fActualThresholdWeightAutoTare 			:= MAIN.fbDynamicWeighing.fActualThresholdWeightAutoTare;
+GVL_WEIGHING_HMI.fActualMaxStdAutoTare						:= MAIN.fbDynamicWeighing.fActualMaxStdAutoTare;
+GVL_WEIGHING_HMI.fActualMaxWeightDeviationAutoTare			:= MAIN.fbDynamicWeighing.fActualMaxWeightDeviationAutoTare;
+	
 GVL_WEIGHING_HMI.fWeight 									:= MAIN.fbDynamicWeighing.fWeight;
 GVL_WEIGHING_HMI.fLastWeight 								:= MAIN.fbDynamicWeighing.fLastWeight;
 GVL_WEIGHING_HMI.fStd 										:= MAIN.fbDynamicWeighing.fStd;
@@ -51,6 +61,29 @@ ELSE (* Reset everytime weight is < than threshold *)
 	GVL_WEIGHING_HMI.bCriteria2 := FALSE;
 	GVL_WEIGHING_HMI.bCriteria3	:= FALSE;
 END_IF
+
+
+(* Stats *)
+fbStats(
+	bValidMeasurement:= MAIN.fbDynamicWeighing.bValidMeasurement, 
+	fLastWeight:= MAIN.fbDynamicWeighing.fLastWeight, 
+	fLastStd:= MAIN.fbDynamicWeighing.fLastStd, 
+	bNewResult:= MAIN.fbDynamicWeighing.bNewResult, 
+	bZerarGrafico:= bZerarGraficoHMI,
+	fReferenceMeasurement:= MAIN.aRawSignal[1], 
+	fMaxWeight=> , 
+	fMinWeight=> , 
+	fDelta=> , 
+	fMinReference=> , 
+	fMaxReference=> , 
+	fDeltaReference=> );
+
+
+(* FB_Scale Diag *)
+GVL_WEIGHING_HMI.bFbScaleCfgd := MAIN.fbDynamicWeighing.fbScaleCfgBit;
+GVL_WEIGHING_HMI.bFbScaleCfgd := MAIN.fbDynamicWeighing.fbScaleCfgBit;
+GVL_WEIGHING_HMI.eFbScaleState	:= MAIN.fbDynamicWeighing.fbScaleEnumState;
+
 ]]></ST>
     </Implementation>
   </POU>

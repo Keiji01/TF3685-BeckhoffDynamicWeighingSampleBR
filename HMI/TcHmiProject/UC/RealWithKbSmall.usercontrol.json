@@ -1,0 +1,41 @@
+{
+  "parameters": [
+    {
+      "allowSymbolExpressionsInObject": false,
+      "requiredOnCompile": false,
+      "bindable": true,
+      "propertySetterName": "setNumber",
+      "propertyGetterName": "getNumber",
+      "refTo": "",
+      "name": "data-tchmi-number",
+      "displayName": "Number",
+      "visible": true,
+      "type": "tchmi:general#/definitions/REAL",
+      "category": "",
+      "description": "",
+      "readOnly": false,
+      "heritable": true,
+      "propertyName": "Number"
+    },
+    {
+      "allowSymbolExpressionsInObject": false,
+      "requiredOnCompile": false,
+      "bindable": true,
+      "propertySetterName": "setKbObj",
+      "propertyGetterName": "getKbObj",
+      "refTo": "",
+      "name": "data-tchmi-kbobj",
+      "displayName": "KbObj",
+      "visible": true,
+      "type": "tchmi:framework#/definitions/TcHmiKeyboard",
+      "category": "",
+      "description": "",
+      "readOnly": false,
+      "heritable": true,
+      "propertyName": "KbObj"
+    }
+  ],
+  "virtualRights": [],
+  "$schema": "./../../Packages/Beckhoff.TwinCAT.HMI.Framework.14.3.393/runtimes/native1.12-tchmi/Schema/UserControlConfig.Schema.json",
+  "description": ""
+}

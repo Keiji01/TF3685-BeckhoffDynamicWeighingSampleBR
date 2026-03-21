@@ -1,0 +1,376 @@
+<div id="Calibration"
+     data-tchmi-type="TcHmi.Controls.System.TcHmiContent"
+     data-tchmi-width="100"
+     data-tchmi-height="100"
+     data-tchmi-width-unit="%"
+     data-tchmi-height-unit="%"
+     data-tchmi-height-mode="Content">
+
+    <div id="MainContainer"
+         data-tchmi-type="TcHmi.Controls.System.TcHmiContainer"
+         data-tchmi-width="840"
+         data-tchmi-height="520"
+         data-tchmi-width-unit="px"
+         data-tchmi-height-unit="px">
+
+        <!-- ================= STATUS ================= -->
+        <div id="ST_Container"
+             data-tchmi-type="TcHmi.Controls.System.TcHmiContainer"
+             data-tchmi-left="10"
+             data-tchmi-top="5"
+             data-tchmi-width="820"
+             data-tchmi-height="120">
+
+            <div id="ST_Title"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
+                 data-tchmi-text="Calibration Status"
+                 data-tchmi-width="820"
+                 data-tchmi-height="40"
+                 data-tchmi-text-font-size="24"
+                 data-tchmi-text-horizontal-alignment="Center"
+                 data-tchmi-text-vertical-alignment="Center">
+                <script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+                    { "color": "rgba(93,107,153,1)" }
+                </script>
+                <script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+                    { "color": "rgba(255,255,255,1)" }
+                </script>
+            </div>
+
+            
+            <div id="ST_CalibrationOK"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
+                 data-tchmi-text="Calibration [FB_Scale]"
+                 data-tchmi-left="300"
+                 data-tchmi-top="50"
+                 data-tchmi-width="200"
+                 data-tchmi-height="30">
+            </div>
+
+            
+        <div id="TcHmiIndicatorLight_4" data-tchmi-type="TcHmi.Controls.Beckhoff.Industries.Common.TcHmiIndicatorLight" data-tchmi-height="25" data-tchmi-height-unit="px" data-tchmi-left="300" data-tchmi-left-unit="px" data-tchmi-top="84" data-tchmi-top-unit="px" data-tchmi-width="25" data-tchmi-width-unit="px" data-tchmi-state-symbol="%s%ADS.PLC1.GVL_WEIGHING_HMI.bFbScaleCfgd%/s%">
+</div>
+<div id="TcHmiTextblock_31" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="330" data-tchmi-left-unit="px" data-tchmi-text="Configured" data-tchmi-top="84" data-tchmi-top-unit="px" data-tchmi-width="73" data-tchmi-width-unit="px" data-tchmi-word-wrap="True">
+</div>
+<div id="TcHmiIndicatorLight_5" data-tchmi-type="TcHmi.Controls.Beckhoff.Industries.Common.TcHmiIndicatorLight" data-tchmi-height="25" data-tchmi-height-unit="px" data-tchmi-left="409" data-tchmi-left-unit="px" data-tchmi-top="84" data-tchmi-top-unit="px" data-tchmi-width="25" data-tchmi-width-unit="px" data-tchmi-state-symbol="%s%ADS.PLC1.GVL_WEIGHING_HMI.bFbScaleErr%/s%">
+
+
+
+<script data-tchmi-target-attribute="data-tchmi-active-color" type="application/json">
+{
+  "color": "rgba(255, 0, 0, 1)"
+}
+</script>
+</div>
+<div id="TcHmiTextblock_32" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="439" data-tchmi-left-unit="px" data-tchmi-text="Error" data-tchmi-top="84" data-tchmi-top-unit="px" data-tchmi-width="61" data-tchmi-width-unit="px" data-tchmi-word-wrap="True">
+</div>
+<div id="NumericWeight_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiNumericInput" data-tchmi-auto-focus-out="True" data-tchmi-decimal-digits="0" data-tchmi-height="54" data-tchmi-height-unit="px" data-tchmi-left="110" data-tchmi-left-unit="px" data-tchmi-reset-to-last-valid-value="True" data-tchmi-top="63" data-tchmi-top-unit="px" data-tchmi-width="150" data-tchmi-width-unit="px" data-tchmi-input-processing-point="Change" data-tchmi-is-read-only="True" data-tchmi-value-font-size="48" data-tchmi-unit="g" data-tchmi-value="%s%ADS.PLC1.GVL_WEIGHING_HMI.fWeight|SubscriptionMode=Poll|Interval=100|Timeout=10000%/s%" data-tchmi-zindex="2">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+</div>
+<div id="TcHmiTextblock_33" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="3" data-tchmi-left-unit="px" data-tchmi-text="Inst. Weight:" data-tchmi-top="90" data-tchmi-top-unit="px" data-tchmi-width="97" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-zindex="2">
+</div>
+<div id="TcHmiCombobox_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiCombobox" data-tchmi-auto-focus-out="True" data-tchmi-combobox-text="Select" data-tchmi-height="23" data-tchmi-height-unit="px" data-tchmi-left="540" data-tchmi-left-unit="px" data-tchmi-top="84" data-tchmi-top-unit="px" data-tchmi-width="260" data-tchmi-width-unit="px" data-tchmi-allow-text-input="False" data-tchmi-auto-select-text="False" data-tchmi-is-read-only="True" data-tchmi-enum-data-symbol="%s%ADS.PLC1.GVL_WEIGHING_HMI.eFbScaleState%/s%" data-tchmi-is-enabled="True">
+<script data-tchmi-target-attribute="data-tchmi-content-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+
+</div>
+<div id="ST_CalibrationOK_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-text="Calibration State [FB_Scale]" data-tchmi-left="540" data-tchmi-top="51" data-tchmi-width="200" data-tchmi-height="30">
+</div>
+</div>
+
+        <!-- ================= SCALING ================= -->
+        <div id="SC_Container"
+             data-tchmi-type="TcHmi.Controls.System.TcHmiContainer"
+             data-tchmi-left="10"
+             data-tchmi-top="137"
+             data-tchmi-width="260"
+             data-tchmi-height="373">
+
+            <div id="SC_Header"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
+                 data-tchmi-text="Scaling"
+                 data-tchmi-width="260"
+                 data-tchmi-height="42"
+                 data-tchmi-text-font-size="20"
+                 data-tchmi-text-horizontal-alignment="Center">
+                <script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+                    { "color": "rgba(93,107,153,1)" }
+                </script>
+                <script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+                    { "color": "rgba(255,255,255,1)" }
+                </script>
+            </div>
+
+            <div id="SC_RawLow"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
+                 data-tchmi-text="Raw Low:"
+                 data-tchmi-left="10"
+                 data-tchmi-top="60">
+            </div>
+
+            <div id="SC_RawHigh"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
+                 data-tchmi-text="Raw High:"
+                 data-tchmi-left="10"
+                 data-tchmi-top="86">
+            </div>
+
+            <div id="SC_Samples"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
+                 data-tchmi-text="Cal. Samples:"
+                 data-tchmi-left="10"
+                 data-tchmi-top="163">
+            </div>
+
+            <div id="SC_GraphPlaceholder"
+                 data-tchmi-type="TcHmi.Controls.System.TcHmiContainer"
+                 data-tchmi-left="10"
+                 data-tchmi-top="188"
+                 data-tchmi-width="240"
+                 data-tchmi-height="180">
+                <script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+                    { "color": "rgba(230,230,230,1)" }
+                </script>
+            </div>
+
+        <div id="SC_RawLow_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-text="Ref Low:" data-tchmi-left="10" data-tchmi-top="112">
+</div>
+<div id="SC_RawLow_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-text="Ref High:" data-tchmi-left="10" data-tchmi-top="138">
+</div>
+<div id="RealNumRawLow" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="75" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/RealWithKbSmall.usercontrol" data-tchmi-top="62" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-width-mode="Content" data-tchmi-height-mode="Content" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_4%/ctrl%" data-tchmi-number="%s%ADS.PLC1.GVL_WEIGHING_HMI.fRawLow%/s%">
+</div>
+<div id="RealNumRawHigh" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="75" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/RealWithKbSmall.usercontrol" data-tchmi-top="86" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-width-mode="Content" data-tchmi-height-mode="Content" data-tchmi-number="%s%ADS.PLC1.GVL_WEIGHING_HMI.fRawHigh%/s%" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_4%/ctrl%">
+</div>
+<div id="RealNumRefLow" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="75" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/RealWithKbSmall.usercontrol" data-tchmi-top="112" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-width-mode="Content" data-tchmi-height-mode="Content" data-tchmi-number="%s%ADS.PLC1.GVL_WEIGHING_HMI.fCalibrateReferenceLow%/s%" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_4%/ctrl%">
+</div>
+<div id="RealNumRefHigh" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="75" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/RealWithKbSmall.usercontrol" data-tchmi-top="138" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-width-mode="Content" data-tchmi-height-mode="Content" data-tchmi-number="%s%ADS.PLC1.GVL_WEIGHING_HMI.fCalibrateReferenceHigh%/s%" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_4%/ctrl%">
+</div>
+<div id="IntCalSamples" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="100" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/IntWithKbSmall.usercontrol" data-tchmi-top="163" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-width-mode="Content" data-tchmi-height-mode="Content" data-tchmi-number="%s%ADS.PLC1.GVL_WEIGHING_HMI.nNumCalibrationSamples%/s%" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_4%/ctrl%">
+</div>
+</div>
+
+        <!-- ================= CALIBRATION ================= -->
+        <div id="CAL_Container"
+             data-tchmi-type="TcHmi.Controls.System.TcHmiContainer"
+             data-tchmi-left="280"
+             data-tchmi-top="137"
+             data-tchmi-width="260"
+             data-tchmi-height="373" data-tchmi-creator-locked="True">
+
+            <div id="CAL_Header"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
+                 data-tchmi-text="Calibration"
+                 data-tchmi-width="260"
+                 data-tchmi-height="42"
+                 data-tchmi-text-font-size="20"
+                 data-tchmi-text-horizontal-alignment="Center">
+                <script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+                    { "color": "rgba(93,107,153,1)" }
+                </script>
+                <script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+                    { "color": "rgba(255,255,255,1)" }
+                </script>
+            </div>
+
+            <div id="CAL_StepLowTxt"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
+                 data-tchmi-text="Step 1: Capture LOW"
+                 data-tchmi-left="10"
+                 data-tchmi-top="60">
+            </div>
+
+            <div id="CAL_CaptureLowBtn"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton"
+                 data-tchmi-text="Capture Low"
+                 data-tchmi-left="10"
+                 data-tchmi-top="90"
+                 data-tchmi-width="200"
+                 data-tchmi-height="40" data-tchmi-state-symbol="%s%ADS.PLC1.GVL_WEIGHING_HMI.bCalibrateReferenceLow%/s%">
+            </div>
+
+            <div id="CAL_StepHighTxt"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
+                 data-tchmi-text="Step 2: Capture HIGH"
+                 data-tchmi-left="10"
+                 data-tchmi-top="140">
+            </div>
+
+            <div id="CAL_CaptureHighBtn"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton"
+                 data-tchmi-text="Capture High"
+                 data-tchmi-left="10"
+                 data-tchmi-top="170"
+                 data-tchmi-width="200"
+                 data-tchmi-height="40" data-tchmi-state-symbol="%s%ADS.PLC1.GVL_WEIGHING_HMI.bCalibrateReferenceHigh%/s%">
+            </div>
+
+            <div id="CAL_ApplyBtn"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton"
+                 data-tchmi-text="Apply Calibration"
+                 data-tchmi-left="10"
+                 data-tchmi-top="240"
+                 data-tchmi-width="220"
+                 data-tchmi-height="40" data-tchmi-state-symbol="%s%ADS.PLC1.GVL_WEIGHING_HMI.bApplyCalibration%/s%">
+            </div>
+
+            
+        <div id="BtnAcceptCal" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiToggleSwitch" data-tchmi-height="40" data-tchmi-height-unit="px" data-tchmi-left="10" data-tchmi-left-unit="px" data-tchmi-text="Accept Calibration" data-tchmi-top="308" data-tchmi-top-unit="px" data-tchmi-width="220" data-tchmi-width-unit="px" data-tchmi-state-symbol="%s%ADS.PLC1.GVL_WEIGHING_HMI.bAcceptCalibration%/s%">
+</div>
+</div>
+
+        <!-- ================= TARE ================= -->
+        <div id="TR_Container"
+             data-tchmi-type="TcHmi.Controls.System.TcHmiContainer"
+             data-tchmi-left="550"
+             data-tchmi-top="137"
+             data-tchmi-width="260"
+             data-tchmi-height="373" data-tchmi-creator-locked="True">
+
+            <div id="TR_Header"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
+                 data-tchmi-text="Tare"
+                 data-tchmi-width="260"
+                 data-tchmi-height="42"
+                 data-tchmi-text-font-size="20"
+                 data-tchmi-text-horizontal-alignment="Center">
+                <script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+                    { "color": "rgba(93,107,153,1)" }
+                </script>
+                <script data-tchmi-target-attribute="data-tchmi-text-color" type="application/json">
+                    { "color": "rgba(255,255,255,1)" }
+                </script>
+            </div>
+
+            <div id="TR_TareBtn"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton"
+                 data-tchmi-text="TARE"
+                 data-tchmi-left="10"
+                 data-tchmi-top="60"
+                 data-tchmi-width="240"
+                 data-tchmi-height="60" data-tchmi-state-symbol="%s%ADS.PLC1.GVL_WEIGHING_HMI.bTare%/s%">
+            
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "rgba(255, 123, 123, 1)"
+}
+</script>
+</div>
+
+            <div id="TR_MaxLimitTxt"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
+                 data-tchmi-text="Max Limit: 40 kg"
+                 data-tchmi-left="10"
+                 data-tchmi-top="140">
+            </div>
+
+            <div id="TR_SamplesTxt"
+                 data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
+                 data-tchmi-text="Samples: 100"
+                 data-tchmi-left="10"
+                 data-tchmi-top="170">
+            </div>
+
+            <div id="TR_ProgressBg"
+                 data-tchmi-type="TcHmi.Controls.System.TcHmiContainer"
+                 data-tchmi-left="10"
+                 data-tchmi-top="220"
+                 data-tchmi-width="240"
+                 data-tchmi-height="20">
+                <script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+                    { "color": "rgba(200,200,200,1)" }
+                </script>
+            </div>
+
+        </div>
+
+    
+<script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">
+{
+  "color": "rgba(246, 246, 246, 1)"
+}
+</script>
+</div>
+<div id="TcHmiKeyboard_4" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiKeyboard" data-tchmi-height="250" data-tchmi-height-unit="px" data-tchmi-label-font-size="14" data-tchmi-layout-file="KeyboardLayouts/Numpad (plusminus).keyboard.json" data-tchmi-left="280" data-tchmi-left-unit="px" data-tchmi-scale-mode="ScaleToFit" data-tchmi-top-unit="px" data-tchmi-width="260" data-tchmi-width-unit="px" data-tchmi-bottom="0" data-tchmi-visibility="Collapsed">
+<script data-tchmi-target-attribute="data-tchmi-indirect-input-padding" type="application/json">
+{
+  "top": 3,
+  "right": 3,
+  "bottom": 3,
+  "left": 3
+}
+</script>
+<script data-tchmi-target-attribute="data-tchmi-keyboard-padding" type="application/json">
+{
+  "top": 10,
+  "topUnit": "px",
+  "right": 10,
+  "rightUnit": "px",
+  "bottom": 10,
+  "bottomUnit": "px",
+  "left": 10,
+  "leftUnit": "px"
+}
+</script>
+<script data-tchmi-target-attribute="data-tchmi-key-padding" type="application/json">
+{
+  "top": 4,
+  "topUnit": "px",
+  "right": 4,
+  "rightUnit": "px",
+  "bottom": 4,
+  "bottomUnit": "px",
+  "left": 4,
+  "leftUnit": "px"
+}
+</script>
+<script data-tchmi-target-attribute="data-tchmi-additional-key-backdrop-padding" type="application/json">
+{
+  "top": 10,
+  "topUnit": "px",
+  "right": 10,
+  "rightUnit": "px",
+  "bottom": 10,
+  "bottomUnit": "px",
+  "left": 10,
+  "leftUnit": "px"
+}
+</script>
+
+
+<script data-tchmi-target-attribute="data-tchmi-border-style" type="application/json">
+{
+  "left": "Solid",
+  "right": "Solid",
+  "top": "Solid",
+  "bottom": "Solid"
+}
+</script>
+
+<script data-tchmi-target-attribute="data-tchmi-border-width" type="application/json">
+{
+  "left": 1,
+  "right": 1,
+  "top": 1,
+  "bottom": 1,
+  "leftUnit": "px",
+  "rightUnit": "px",
+  "topUnit": "px",
+  "bottomUnit": "px"
+}
+</script>
+</div>
+</div>

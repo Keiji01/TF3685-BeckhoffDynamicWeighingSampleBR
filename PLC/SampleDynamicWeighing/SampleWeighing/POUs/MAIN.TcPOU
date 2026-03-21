@@ -47,11 +47,20 @@ VAR
 	yFiltroSaida5		: LREAL;
 				
 	bSucceed			: BOOL;
-	bReset: BOOL;
+	bReset				: BOOL;
+	bSimulateRefLow: BOOL;
+	bSimulateRefHigh: BOOL;
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Generate inputs FOR simulation
-GenerateInputs();
+IF bSimulateRefLow THEN
+	aRawInputNoise[1] := 150.0;
+ELSIF bSimulateRefHigh THEN
+	aRawInputNoise[1] := 1000.0;
+ELSE
+	GenerateInputs();
+END_IF
+
 
 // Increase the weight continuously.
 IF bActivateSlope THEN

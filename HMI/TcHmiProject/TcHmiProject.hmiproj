@@ -128,8 +128,38 @@
     <Content Include="Imports\Images\Terminal.svg">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Pages\Calibration.content">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="PopUps\TuneAutoTare.content">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="PopUps\TuneValidation.content">
       <SubType>Content</SubType>
+    </Content>
+    <Content Include="Server\ADS\ADS.Config.default.json">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UC\BigNumWithKbFloat.usercontrol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UC\BigNumWithKbFloat.usercontrol.json">
+      <SubType>Content</SubType>
+      <DependentUpon>UC\BigNumWithKbFloat.usercontrol</DependentUpon>
+    </Content>
+    <Content Include="UC\IntWithKbSmall.usercontrol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UC\IntWithKbSmall.usercontrol.json">
+      <SubType>Content</SubType>
+      <DependentUpon>UC\IntWithKbSmall.usercontrol</DependentUpon>
+    </Content>
+    <Content Include="UC\RealWithKbSmall.usercontrol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UC\RealWithKbSmall.usercontrol.json">
+      <SubType>Content</SubType>
+      <DependentUpon>UC\RealWithKbSmall.usercontrol</DependentUpon>
     </Content>
     <Content Include="UC\RealWithKb.usercontrol">
       <SubType>Content</SubType>

@@ -56,8 +56,18 @@ VAR_OUTPUT
 	fActualMaxWeightDeviationValidation : LREAL;
 	fActualRelativeWeightLimit			: LREAL;	
 	
+	(* AutoTare Values *)
+	fActualThresholdWeightAutoTare 		: LREAL;	
+	nActualValidationSamplesAutoTare	: UDINT;
+	fActualMaxStdAutoTare			    : LREAL;
+	fActualMaxWeightDeviationAutoTare 	: LREAL;
+	
 	fMax : LREAL;
 	fMin : LREAL;
+	
+	fbScaleErrorBit : BOOL;	
+	fbScaleCfgBit	: BOOL;
+	fbScaleEnumState : E_WG_Calibrate;
 END_VAR
 VAR
 	fbComboFilter 				: FB_WG_ComboFilter	:= (stConfig := stParamsComboFilter);
@@ -171,7 +181,18 @@ nActualValidationSamplesValidation		:= fbWeighing.stConfig.Validation.nValidatio
 fActualThresholdWeightValidation 		:= fbWeighing.stConfig.Validation.fThresholdWeight;
 fActualMaxStdValidation			    	:= fbWeighing.stConfig.Validation.fMaxStd;
 fActualMaxWeightDeviationValidation 	:= fbWeighing.stConfig.Validation.fMaxWeightDeviation;
-fActualRelativeWeightLimit				:= fbWeighing.stConfig.Validation.fRelativeWeightLimit;]]></ST>
+fActualRelativeWeightLimit				:= fbWeighing.stConfig.Validation.fRelativeWeightLimit;
+
+
+fbScaleErrorBit	:= fbScale.bError;
+fbScaleCfgBit	:= fbScale.bConfigured;
+fbScaleEnumState	:= fbScale.eCalibrateState;
+
+
+fActualThresholdWeightAutoTare 		:= fbWeighing.stConfig.AutoTare.fThresholdWeight;
+nActualValidationSamplesAutoTare	:= fbWeighing.stConfig.AutoTare.nValidationSamples;
+fActualMaxStdAutoTare			    := fbWeighing.stConfig.AutoTare.fMaxStd;
+fActualMaxWeightDeviationAutoTare 	:= fbWeighing.stConfig.AutoTare.fMaxWeightDeviation;]]></ST>
       </Implementation>
     </Method>
     <Method Name="AssignResults" Id="{5338b36c-b8c1-43fa-b63f-6f36aa7572dc}">

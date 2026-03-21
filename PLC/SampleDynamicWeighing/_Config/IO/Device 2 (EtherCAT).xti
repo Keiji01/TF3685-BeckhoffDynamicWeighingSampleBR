@@ -4,9 +4,9 @@
 		<Name>__FILENAME__</Name>
 		<AddressInfo>
 			<Pnp>
-				<DeviceDesc>Ethernet 2 (TwinCAT-Intel PCI Ethernet Adapter (Gig</DeviceDesc>
-				<DeviceName>\DEVICE\{A25543B8-066B-4CE2-B4D0-3EF3114095E4}</DeviceName>
-				<DeviceData>0001053b46f7</DeviceData>
+				<DeviceDesc>Ethernet (TwinCAT-Intel PCI Ethernet Adapter (Gigab</DeviceDesc>
+				<DeviceName>\DEVICE\{73161E49-0760-46E7-8F19-F5E2451962A7}</DeviceName>
+				<DeviceData>0001053b46f6</DeviceData>
 			</Pnp>
 		</AddressInfo>
 		<Image Id="2" ImageFlags="#x00000230" AddrType="9" ImageType="3">
@@ -18,6 +18,6 @@
 		<Box File="Term 14 (EK1100).xti" Id="14">
 			<EtherCAT PortABoxInfo="#x02000001"/>
 		</Box>
-		<EtherCAT DcSyncMode="3"/>
+		<EtherCAT/>
 	</Device>
 </TcSmItem>

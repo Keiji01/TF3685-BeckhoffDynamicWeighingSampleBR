@@ -221,6 +221,11 @@
     "content": "Pages/SWFilters.content",
     "id": "FilterConfiguration",
     "name": "%l%L_FilterCfg%/l%"
+  },
+  {
+    "content": "Pages/Calibration.content",
+    "id": "Calibration",
+    "name": "Calibration"
   }
 ]
 </script></div><div id="Region_Center" data-tchmi-type="TcHmi.Controls.System.TcHmiRegion" data-tchmi-left="0" data-tchmi-top="%ctrl%Header_Top::Height%/ctrl%" data-tchmi-scrolling="Yes" data-tchmi-bottom="0" data-tchmi-right="%f%%ctrl%Accordion_Navigation_Right::Width%/ctrl% + 60%/f%">

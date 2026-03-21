@@ -59,17 +59,33 @@
   ],
   "userControls": [
     {
+      "url": "UC/BigNumWithKbFloat.usercontrol"
+    },
+    {
       "url": "UC/FilterNumWithKb.usercontrol"
+    },
+    {
+      "url": "UC/IntWithKbSmall.usercontrol"
     },
     {
       "url": "UC/PTn.usercontrol"
     },
     {
       "url": "UC/RealWithKb.usercontrol"
+    },
+    {
+      "url": "UC/RealWithKbSmall.usercontrol"
     }
   ],
   "controls": [],
   "content": [
+    {
+      "url": "Pages/Calibration.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
     {
       "url": "Pages/EtherCATDiagnostics.content",
       "preload": false,
@@ -100,6 +116,13 @@
     },
     {
       "url": "Pages/SWFilters.content",
+      "preload": false,
+      "keepAlive": false,
+      "loadSync": false,
+      "preloadBindings": false
+    },
+    {
+      "url": "PopUps/TuneAutoTare.content",
       "preload": false,
       "keepAlive": false,
       "loadSync": false,

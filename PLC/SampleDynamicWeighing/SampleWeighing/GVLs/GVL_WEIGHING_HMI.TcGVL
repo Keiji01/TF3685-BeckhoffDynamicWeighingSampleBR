@@ -45,7 +45,7 @@ VAR_GLOBAL PERSISTENT
 	bCalibrateReferenceLow 		: BOOL := FALSE;
 	bCalibrateReferenceHigh 	: BOOL := FALSE;
 	bApplyCalibration 			: BOOL := FALSE;
-	bAcceptCalibration 			: BOOL := TRUE;
+	bAcceptCalibration 			: BOOL := TRUE; // Bit para permitir calibração - se TRUE aceita aplicar, se FALSE não permite
 	
 	(* Tare *)	
 	bTare : BOOL := FALSE;
@@ -158,6 +158,12 @@ VAR_GLOBAL PERSISTENT
 	fActualMaxStdValidation					: LREAL;
 	fActualMaxWeightDeviationValidation		: LREAL;
 	
+	(* Autotare *)
+	nActualValidationSamplesAutoTare		: UDINT;
+	fActualThresholdWeightAutoTare 			: LREAL;
+	fActualMaxStdAutoTare					: LREAL;
+	fActualMaxWeightDeviationAutoTare		: LREAL;
+	
 	(* Last and Actual Weigh Values *)
 	fWeight 		: LREAL;
 	fLastWeight 	: LREAL;
@@ -171,7 +177,13 @@ VAR_GLOBAL PERSISTENT
 	bCriteria2			: BOOL;
 	bCriteria3			: BOOL;
 	
+	(* FB_Scale Stats *)
+	bFbScaleCfgd : BOOL;
+	bFbScaleErr	: BOOL;
 	
+END_VAR
+VAR_GLOBAL
+	eFbScaleState: E_WG_Calibrate;
 END_VAR]]></Declaration>
   </GVL>
 </TcPlcObject>

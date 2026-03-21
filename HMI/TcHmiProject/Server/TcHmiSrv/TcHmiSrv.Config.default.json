@@ -1627,6 +1627,41 @@
                     }
                 ],
                 "type": "integer"
+            },
+            "ADS-PLC1.TcWeighing.E_WG_Calibrate": {
+                "attributes": {
+                    "plcAttribute_qualified_only": ""
+                },
+                "enum": [
+                    1,
+                    2,
+                    3,
+                    4,
+                    5
+                ],
+                "options": [
+                    {
+                        "label": "eIdle",
+                        "value": 1
+                    },
+                    {
+                        "label": "eCalibrateLow",
+                        "value": 2
+                    },
+                    {
+                        "label": "eCalibrateHigh",
+                        "value": 3
+                    },
+                    {
+                        "label": "eCalibrateIdle",
+                        "value": 4
+                    },
+                    {
+                        "label": "eTare",
+                        "value": 5
+                    }
+                ],
+                "type": "integer"
             }
         }
     },
@@ -2519,6 +2554,103 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bAcceptCalibration": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bAcceptCalibration",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bApplyCalibration": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bApplyCalibration",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bCalibrateReferenceHigh": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bCalibrateReferenceHigh",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bCalibrateReferenceLow": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bCalibrateReferenceLow",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bCriteria1": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bCriteria1",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bCriteria2": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bCriteria2",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bCriteria3": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bCriteria3",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bFbScaleCfgd": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bFbScaleCfgd",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "FB_Scale Stats"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bFbScaleErr": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bFbScaleErr",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureFilter": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -2596,11 +2728,58 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bTare": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bTare",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "Tare"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.eFbScaleState": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::eFbScaleState",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/ADS-PLC1.TcWeighing.E_WG_Calibrate"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.fActualMaxStdAutoTare": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fActualMaxStdAutoTare",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_WEIGHING_HMI.fActualMaxStdValidation": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
             "DYNAMIC": true,
             "MAPPING": "PLC1::GVL_WEIGHING_HMI::fActualMaxStdValidation",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.fActualMaxWeightDeviationAutoTare": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fActualMaxWeightDeviationAutoTare",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/LREAL"
             },
@@ -2626,6 +2805,16 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_WEIGHING_HMI.fActualThresholdWeightAutoTare": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fActualThresholdWeightAutoTare",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_WEIGHING_HMI.fActualThresholdWeightValidation": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -2633,6 +2822,33 @@
             "MAPPING": "PLC1::GVL_WEIGHING_HMI::fActualThresholdWeightValidation",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.fCalibrateReferenceHigh": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fCalibrateReferenceHigh",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.fCalibrateReferenceLow": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fCalibrateReferenceLow",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/LREAL"
+                    },
+                    {
+                        "comment": "Calibration"
+                    }
+                ]
             },
             "USEMAPPING": true
         },
@@ -2693,6 +2909,33 @@
             "MAPPING": "PLC1::GVL_WEIGHING_HMI::fMaxWeightDeviationValidation",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.fRawHigh": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fRawHigh",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.fRawLow": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fRawLow",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/REAL"
+                    },
+                    {
+                        "comment": "Scaling Params"
+                    }
+                ]
             },
             "USEMAPPING": true
         },
@@ -2938,6 +3181,23 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_WEIGHING_HMI.nActualValidationSamplesAutoTare": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::nActualValidationSamplesAutoTare",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/UDINT"
+                    },
+                    {
+                        "comment": "Autotare"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_WEIGHING_HMI.nActualValidationSamplesValidation": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -3015,6 +3275,16 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_WEIGHING_HMI.nNumCalibrationSamples": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::nNumCalibrationSamples",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/UDINT"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn1": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -3062,6 +3332,16 @@
             "MAPPING": "PLC1::GVL_WEIGHING_HMI::nOrderPTn5",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/UINT"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.nValidationSamplesAutoTare": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::nValidationSamplesAutoTare",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/UDINT"
             },
             "USEMAPPING": true
         },
@@ -11131,6 +11411,15 @@
                 "ADS.PLC1.GVL_WEIGHING_HMI.EFilter3": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.EFilter4": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.EFilter5": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bAcceptCalibration": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bApplyCalibration": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bCalibrateReferenceHigh": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bCalibrateReferenceLow": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bCriteria1": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bCriteria2": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bCriteria3": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bFbScaleCfgd": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bFbScaleErr": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureFilter": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn1": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn2": 3,
@@ -11138,16 +11427,25 @@
                 "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn4": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn5": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureWeighing": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bTare": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.eFbScaleState": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.fActualMaxStdAutoTare": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fActualMaxStdValidation": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.fActualMaxWeightDeviationAutoTare": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fActualMaxWeightDeviationValidation": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fActualRelativeWeightLimit": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.fActualThresholdWeightAutoTare": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fActualThresholdWeightValidation": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.fCalibrateReferenceHigh": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.fCalibrateReferenceLow": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fLastStd": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fLastWeight": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fMaxStdAutoTare": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fMaxStdValidation": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fMaxWeightDeviationAutoTare": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fMaxWeightDeviationValidation": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.fRawHigh": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.fRawLow": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fRelativeWeightLimit": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fSamplingRatePTn1": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fSamplingRatePTn2": 3,
@@ -11168,6 +11466,7 @@
                 "ADS.PLC1.GVL_WEIGHING_HMI.fc3": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fc4": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fc5": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.nActualValidationSamplesAutoTare": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nActualValidationSamplesValidation": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nActualWindowLenght": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn1": 3,
@@ -11175,11 +11474,13 @@
                 "ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn3": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn4": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn5": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.nNumCalibrationSamples": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn1": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn2": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn3": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn4": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn5": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.nValidationSamplesAutoTare": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nValidationSamplesValidation": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nWindowLenght": 3,
                 "ADS.PLC1.MAIN.fbDynamicWeighing.stParamsWeighing.Validation.fThresholdWeight": 3,
