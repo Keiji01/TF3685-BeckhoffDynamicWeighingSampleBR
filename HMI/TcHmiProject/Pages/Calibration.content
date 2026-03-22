@@ -169,7 +169,7 @@
              data-tchmi-left="280"
              data-tchmi-top="137"
              data-tchmi-width="260"
-             data-tchmi-height="373" data-tchmi-creator-locked="True">
+             data-tchmi-height="373">
 
             <div id="CAL_Header"
                  data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
@@ -238,7 +238,7 @@
              data-tchmi-left="550"
              data-tchmi-top="137"
              data-tchmi-width="260"
-             data-tchmi-height="373" data-tchmi-creator-locked="True">
+             data-tchmi-height="373">
 
             <div id="TR_Header"
                  data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
@@ -272,14 +272,14 @@
 
             <div id="TR_MaxLimitTxt"
                  data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
-                 data-tchmi-text="Max Limit: 40 kg"
+                 data-tchmi-text="Max Limit:"
                  data-tchmi-left="10"
                  data-tchmi-top="140">
             </div>
 
             <div id="TR_SamplesTxt"
                  data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock"
-                 data-tchmi-text="Samples: 100"
+                 data-tchmi-text="Samples:"
                  data-tchmi-left="10"
                  data-tchmi-top="170">
             </div>
@@ -295,7 +295,11 @@
                 </script>
             </div>
 
-        </div>
+        <div id="RealNumRawLow_1" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="85" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/RealWithKbSmall.usercontrol" data-tchmi-top="140" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-width-mode="Content" data-tchmi-height-mode="Content" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_4%/ctrl%" data-tchmi-number="%s%ADS.PLC1.GVL_WEIGHING_HMI.fMaxTotalTareLimit%/s%">
+</div>
+<div id="IntTareSamples" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left="85" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/IntWithKbSmall.usercontrol" data-tchmi-top="170" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-width-mode="Content" data-tchmi-height-mode="Content" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_4%/ctrl%" data-tchmi-number="%s%ADS.PLC1.GVL_WEIGHING_HMI.nNumTareSamples%/s%">
+</div>
+</div>
 
     
 <script data-tchmi-target-attribute="data-tchmi-background-color" type="application/json">

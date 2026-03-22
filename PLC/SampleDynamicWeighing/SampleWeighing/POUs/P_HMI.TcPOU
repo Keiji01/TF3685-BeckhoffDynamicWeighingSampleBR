@@ -6,6 +6,8 @@ VAR
 	fDelta: LREAL;
 	fbStats: FB_STATS;
 	bZerarGraficoHMI: BOOL;
+	i : INT;
+	fFactor: LREAL;
 END_VAR
 ]]></Declaration>
     <Implementation>
@@ -83,6 +85,24 @@ fbStats(
 GVL_WEIGHING_HMI.bFbScaleCfgd := MAIN.fbDynamicWeighing.fbScaleCfgBit;
 GVL_WEIGHING_HMI.bFbScaleCfgd := MAIN.fbDynamicWeighing.fbScaleCfgBit;
 GVL_WEIGHING_HMI.eFbScaleState	:= MAIN.fbDynamicWeighing.fbScaleEnumState;
+
+(* Filters Diag *)
+FOR i := 1 TO 5 DO	
+	GVL_WEIGHING_HMI.aST_PTn_HMI[i] := MAIN.aPTn[i].stConfig;
+	GVL_WEIGHING_HMI.aST_MovAvg_HMI[i] := MAIN.aMovAvg[i].stConfig;
+	
+	IF (GVL_WEIGHING_HMI.aST_PTn_HMI[i].fT1 > 0.0) AND 
+		(GVL_WEIGHING_HMI.aST_PTn_HMI[i].nOrder > 0) THEN
+		
+		fFactor := SQRT(EXPT(2.0, 1.0 / GVL_WEIGHING_HMI.aST_PTn_HMI[i].nOrder) - 1.0);
+
+		GVL_WEIGHING_HMI.aFcHmi[i] :=
+			(1.0 / (2.0 * PI * GVL_WEIGHING_HMI.aST_PTn_HMI[i].fT1 * fFactor));
+	ELSE
+		GVL_WEIGHING_HMI.aFcHmi[i] := 0.0;
+	END_IF
+END_FOR
+
 
 ]]></ST>
     </Implementation>

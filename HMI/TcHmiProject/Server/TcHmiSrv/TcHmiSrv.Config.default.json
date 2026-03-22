@@ -91,6 +91,33 @@
                 "startOffset": 1,
                 "type": "array"
             },
+            "ADS-PLC1.ARRAY_1..5_OF-LREAL": {
+                "items": {
+                    "$ref": "tchmi:general#/definitions/LREAL"
+                },
+                "maxItems": 5,
+                "minItems": 5,
+                "startOffset": 1,
+                "type": "array"
+            },
+            "ADS-PLC1.ARRAY_1..5_OF-TcFilter.ST_FTR_MovAvg": {
+                "items": {
+                    "$ref": "tchmi:server#/definitions/ADS-PLC1.TcFilter.ST_FTR_MovAvg"
+                },
+                "maxItems": 5,
+                "minItems": 5,
+                "startOffset": 1,
+                "type": "array"
+            },
+            "ADS-PLC1.ARRAY_1..5_OF-TcFilter.ST_FTR_PTn": {
+                "items": {
+                    "$ref": "tchmi:server#/definitions/ADS-PLC1.TcFilter.ST_FTR_PTn"
+                },
+                "maxItems": 5,
+                "minItems": 5,
+                "startOffset": 1,
+                "type": "array"
+            },
             "ADS-PLC1.ARRAY_1..8_OF-BOOL": {
                 "items": {
                     "$ref": "tchmi:general#/definitions/BOOL"
@@ -1438,6 +1465,88 @@
                 },
                 "type": "object"
             },
+            "ADS-PLC1.TcFilter.ST_FTR_MovAvg": {
+                "additionalProperties": false,
+                "properties": {
+                    "bReset": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/BOOL"
+                            },
+                            {
+                                "attributes": {
+                                    "plcAttribute_hide": ""
+                                },
+                                "comment": "Reset memory if bReset = TRUE.",
+                                "propertyOrder": 2
+                            }
+                        ]
+                    },
+                    "nChannels": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/UDINT"
+                            },
+                            {
+                                "comment": "Number of channels has to be greater than zero and smaller than 101.",
+                                "propertyOrder": 4
+                            }
+                        ]
+                    },
+                    "nInitialValuesSize": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/UDINT"
+                            },
+                            {
+                                "comment": "Size of array with initial values in bytes (together with pInitialValues optional parameter).",
+                                "propertyOrder": 6
+                            }
+                        ]
+                    },
+                    "nOversamples": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/UDINT"
+                            },
+                            {
+                                "comment": "Number of oversamples has to be greater than zero.",
+                                "propertyOrder": 3
+                            }
+                        ]
+                    },
+                    "nSamplesToFilter": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:general#/definitions/UDINT"
+                            },
+                            {
+                                "comment": "Number of samples has to be greater than zero.",
+                                "propertyOrder": 1
+                            }
+                        ]
+                    },
+                    "pInitialValues": {
+                        "allOf": [
+                            {
+                                "$ref": "tchmi:server#/definitions/ADS-PLC1.POINTER-TO-LREAL"
+                            },
+                            {
+                                "comment": "Pointer to array with initial values (together with nInitialValuesSize optional parameter).",
+                                "propertyOrder": 5
+                            }
+                        ]
+                    }
+                },
+                "required": [
+                    "nSamplesToFilter",
+                    "bReset",
+                    "nOversamples",
+                    "nChannels",
+                    "nInitialValuesSize"
+                ],
+                "type": "object"
+            },
             "ADS-PLC1.TcFilter.ST_FTR_PTn": {
                 "additionalProperties": false,
                 "properties": {
@@ -2554,13 +2663,460 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aFcHmi",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/ADS-PLC1.ARRAY_1..5_OF-LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi.0": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aFcHmi[0]",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi.1": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aFcHmi[1]",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi.2": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aFcHmi[2]",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi.3": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aFcHmi[3]",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi.4": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aFcHmi[4]",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_MovAvg_HMI",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/ADS-PLC1.ARRAY_1..5_OF-TcFilter.ST_FTR_MovAvg"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI.0.nSamplesToFilter": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_MovAvg_HMI[0]::nSamplesToFilter",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/UDINT"
+                    },
+                    {
+                        "comment": "Number of samples has to be greater than zero.",
+                        "propertyOrder": 1
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI.1.nSamplesToFilter": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_MovAvg_HMI[1]::nSamplesToFilter",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/UDINT"
+                    },
+                    {
+                        "comment": "Number of samples has to be greater than zero.",
+                        "propertyOrder": 1
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI.2.nSamplesToFilter": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_MovAvg_HMI[2]::nSamplesToFilter",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/UDINT"
+                    },
+                    {
+                        "comment": "Number of samples has to be greater than zero.",
+                        "propertyOrder": 1
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI.3.nSamplesToFilter": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_MovAvg_HMI[3]::nSamplesToFilter",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/UDINT"
+                    },
+                    {
+                        "comment": "Number of samples has to be greater than zero.",
+                        "propertyOrder": 1
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI.4.nSamplesToFilter": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_MovAvg_HMI[4]::nSamplesToFilter",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/UDINT"
+                    },
+                    {
+                        "comment": "Number of samples has to be greater than zero.",
+                        "propertyOrder": 1
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI",
+            "SCHEMA": {
+                "$ref": "tchmi:server#/definitions/ADS-PLC1.ARRAY_1..5_OF-TcFilter.ST_FTR_PTn"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.0.fKp": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI[0]::fKp",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/LREAL"
+                    },
+                    {
+                        "comment": "Gain factor has to be greater than zero.",
+                        "propertyOrder": 1
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.0.fSamplingRate": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI[0]::fSamplingRate",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/LREAL"
+                    },
+                    {
+                        "comment": "Sampling rate [Hz] has to be greater than zero.",
+                        "propertyOrder": 4
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.0.nOrder": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI[0]::nOrder",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/UDINT"
+                    },
+                    {
+                        "comment": "Order has to be between one and ten.",
+                        "propertyOrder": 3
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.1.fKp": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI[1]::fKp",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/LREAL"
+                    },
+                    {
+                        "comment": "Gain factor has to be greater than zero.",
+                        "propertyOrder": 1
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.1.fSamplingRate": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI[1]::fSamplingRate",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/LREAL"
+                    },
+                    {
+                        "comment": "Sampling rate [Hz] has to be greater than zero.",
+                        "propertyOrder": 4
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.1.nOrder": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI[1]::nOrder",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/UDINT"
+                    },
+                    {
+                        "comment": "Order has to be between one and ten.",
+                        "propertyOrder": 3
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.2.fKp": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI[2]::fKp",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/LREAL"
+                    },
+                    {
+                        "comment": "Gain factor has to be greater than zero.",
+                        "propertyOrder": 1
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.2.fSamplingRate": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI[2]::fSamplingRate",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/LREAL"
+                    },
+                    {
+                        "comment": "Sampling rate [Hz] has to be greater than zero.",
+                        "propertyOrder": 4
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.2.nOrder": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI[2]::nOrder",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/UDINT"
+                    },
+                    {
+                        "comment": "Order has to be between one and ten.",
+                        "propertyOrder": 3
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.3.fKp": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI[3]::fKp",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/LREAL"
+                    },
+                    {
+                        "comment": "Gain factor has to be greater than zero.",
+                        "propertyOrder": 1
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.3.fSamplingRate": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI[3]::fSamplingRate",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/LREAL"
+                    },
+                    {
+                        "comment": "Sampling rate [Hz] has to be greater than zero.",
+                        "propertyOrder": 4
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.3.nOrder": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI[3]::nOrder",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/UDINT"
+                    },
+                    {
+                        "comment": "Order has to be between one and ten.",
+                        "propertyOrder": 3
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.4.fKp": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI[4]::fKp",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/LREAL"
+                    },
+                    {
+                        "comment": "Gain factor has to be greater than zero.",
+                        "propertyOrder": 1
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.4.fSamplingRate": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI[4]::fSamplingRate",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/LREAL"
+                    },
+                    {
+                        "comment": "Sampling rate [Hz] has to be greater than zero.",
+                        "propertyOrder": 4
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.4.nOrder": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::aST_PTn_HMI[4]::nOrder",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/UDINT"
+                    },
+                    {
+                        "comment": "Order has to be between one and ten.",
+                        "propertyOrder": 3
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_WEIGHING_HMI.bAcceptCalibration": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
             "DYNAMIC": true,
             "MAPPING": "PLC1::GVL_WEIGHING_HMI::bAcceptCalibration",
             "SCHEMA": {
-                "$ref": "tchmi:general#/definitions/BOOL"
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "Bit para permitir calibração - se TRUE aceita aplicar, se FALSE não permite"
+                    }
+                ]
             },
             "USEMAPPING": true
         },
@@ -2624,6 +3180,16 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bDisableEmbeddedFilter": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bDisableEmbeddedFilter",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_WEIGHING_HMI.bFbScaleCfgd": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -2665,6 +3231,56 @@
                         "comment": "Booleans to Reconfigure Filters By IHM"
                     }
                 ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureMovAvg1": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bReconfigureMovAvg1",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureMovAvg2": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bReconfigureMovAvg2",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureMovAvg3": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bReconfigureMovAvg3",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureMovAvg4": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bReconfigureMovAvg4",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureMovAvg5": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bReconfigureMovAvg5",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/BOOL"
             },
             "USEMAPPING": true
         },
@@ -2728,6 +3344,23 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_WEIGHING_HMI.bSimulate": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::bSimulate",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/BOOL"
+                    },
+                    {
+                        "comment": "Use Real or Simulated Signal"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_WEIGHING_HMI.bTare": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -2752,6 +3385,16 @@
             "MAPPING": "PLC1::GVL_WEIGHING_HMI::eFbScaleState",
             "SCHEMA": {
                 "$ref": "tchmi:server#/definitions/ADS-PLC1.TcWeighing.E_WG_Calibrate"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.fAbsoluteNoise": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fAbsoluteNoise",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
             },
             "USEMAPPING": true
         },
@@ -2852,6 +3495,16 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_WEIGHING_HMI.fFrequency": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fFrequency",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_WEIGHING_HMI.fLastStd": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -2892,6 +3545,23 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_WEIGHING_HMI.fMaxTotalTareLimit": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fMaxTotalTareLimit",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/LREAL"
+                    },
+                    {
+                        "comment": "set error if total taring amount exceeds the limit"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_WEIGHING_HMI.fMaxWeightDeviationAutoTare": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -2907,6 +3577,26 @@
             "DOMAIN": "ADS",
             "DYNAMIC": true,
             "MAPPING": "PLC1::GVL_WEIGHING_HMI::fMaxWeightDeviationValidation",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.fNotchFrequency": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fNotchFrequency",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/LREAL"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.fRawAmplitudeSignal": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fRawAmplitudeSignal",
             "SCHEMA": {
                 "$ref": "tchmi:general#/definitions/LREAL"
             },
@@ -3046,56 +3736,6 @@
             },
             "USEMAPPING": true
         },
-        "ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn1": {
-            "ACCESS": 3,
-            "DOMAIN": "ADS",
-            "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fbFilterPTn1",
-            "SCHEMA": {
-                "$ref": "tchmi:server#/definitions/ADS-PLC1.Tc3_Filter.FB_FTR_PTn"
-            },
-            "USEMAPPING": true
-        },
-        "ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn2": {
-            "ACCESS": 3,
-            "DOMAIN": "ADS",
-            "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fbFilterPTn2",
-            "SCHEMA": {
-                "$ref": "tchmi:server#/definitions/ADS-PLC1.Tc3_Filter.FB_FTR_PTn"
-            },
-            "USEMAPPING": true
-        },
-        "ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn3": {
-            "ACCESS": 3,
-            "DOMAIN": "ADS",
-            "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fbFilterPTn3",
-            "SCHEMA": {
-                "$ref": "tchmi:server#/definitions/ADS-PLC1.Tc3_Filter.FB_FTR_PTn"
-            },
-            "USEMAPPING": true
-        },
-        "ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn4": {
-            "ACCESS": 3,
-            "DOMAIN": "ADS",
-            "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fbFilterPTn4",
-            "SCHEMA": {
-                "$ref": "tchmi:server#/definitions/ADS-PLC1.Tc3_Filter.FB_FTR_PTn"
-            },
-            "USEMAPPING": true
-        },
-        "ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn5": {
-            "ACCESS": 3,
-            "DOMAIN": "ADS",
-            "DYNAMIC": true,
-            "MAPPING": "PLC1::GVL_WEIGHING_HMI::fbFilterPTn5",
-            "SCHEMA": {
-                "$ref": "tchmi:server#/definitions/ADS-PLC1.Tc3_Filter.FB_FTR_PTn"
-            },
-            "USEMAPPING": true
-        },
         "ADS.PLC1.GVL_WEIGHING_HMI.fc1": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -3124,7 +3764,7 @@
                         "$ref": "tchmi:general#/definitions/LREAL"
                     },
                     {
-                        "comment": "Cut Frequency in Hz"
+                        "comment": "Filter 2"
                     }
                 ]
             },
@@ -3225,6 +3865,23 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_WEIGHING_HMI.nFilterOrder": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::nFilterOrder",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/UINT"
+                    },
+                    {
+                        "comment": "Combo Filter Cfg"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn1": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -3285,6 +3942,16 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_WEIGHING_HMI.nNumTareSamples": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::nNumTareSamples",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/UDINT"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn1": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -3335,6 +4002,16 @@
             },
             "USEMAPPING": true
         },
+        "ADS.PLC1.GVL_WEIGHING_HMI.nSamplesToFilter": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::nSamplesToFilter",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/UINT"
+            },
+            "USEMAPPING": true
+        },
         "ADS.PLC1.GVL_WEIGHING_HMI.nValidationSamplesAutoTare": {
             "ACCESS": 3,
             "DOMAIN": "ADS",
@@ -3369,6 +4046,73 @@
                         "comment": "Weighing Params"
                     }
                 ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.nWindowSizeMovAvg1": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::nWindowSizeMovAvg1",
+            "SCHEMA": {
+                "allOf": [
+                    {
+                        "$ref": "tchmi:general#/definitions/UDINT"
+                    },
+                    {
+                        "comment": "Moving Average Values"
+                    }
+                ]
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.nWindowSizeMovAvg2": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::nWindowSizeMovAvg2",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/UDINT"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.nWindowSizeMovAvg3": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::nWindowSizeMovAvg3",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/UDINT"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.nWindowSizeMovAvg4": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::nWindowSizeMovAvg4",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/UDINT"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.nWindowSizeMovAvg5": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::nWindowSizeMovAvg5",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/UDINT"
+            },
+            "USEMAPPING": true
+        },
+        "ADS.PLC1.GVL_WEIGHING_HMI.rCutOff": {
+            "ACCESS": 3,
+            "DOMAIN": "ADS",
+            "DYNAMIC": true,
+            "MAPPING": "PLC1::GVL_WEIGHING_HMI::rCutOff",
+            "SCHEMA": {
+                "$ref": "tchmi:general#/definitions/REAL"
             },
             "USEMAPPING": true
         },
@@ -11411,6 +12155,34 @@
                 "ADS.PLC1.GVL_WEIGHING_HMI.EFilter3": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.EFilter4": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.EFilter5": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi.0": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi.1": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi.2": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi.3": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi.4": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI.0.nSamplesToFilter": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI.1.nSamplesToFilter": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI.2.nSamplesToFilter": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI.3.nSamplesToFilter": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI.4.nSamplesToFilter": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.0.fKp": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.0.fSamplingRate": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.0.nOrder": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.1.fKp": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.1.fSamplingRate": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.1.nOrder": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.2.fKp": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.2.fSamplingRate": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.2.nOrder": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.3.fKp": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.3.fSamplingRate": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.3.nOrder": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.4.fKp": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.4.fSamplingRate": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.4.nOrder": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bAcceptCalibration": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bApplyCalibration": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bCalibrateReferenceHigh": 3,
@@ -11418,17 +12190,25 @@
                 "ADS.PLC1.GVL_WEIGHING_HMI.bCriteria1": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bCriteria2": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bCriteria3": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bDisableEmbeddedFilter": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bFbScaleCfgd": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bFbScaleErr": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureFilter": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureMovAvg1": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureMovAvg2": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureMovAvg3": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureMovAvg4": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureMovAvg5": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn1": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn2": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn3": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn4": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn5": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureWeighing": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.bSimulate": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.bTare": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.eFbScaleState": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.fAbsoluteNoise": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fActualMaxStdAutoTare": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fActualMaxStdValidation": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fActualMaxWeightDeviationAutoTare": 3,
@@ -11438,12 +12218,16 @@
                 "ADS.PLC1.GVL_WEIGHING_HMI.fActualThresholdWeightValidation": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fCalibrateReferenceHigh": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fCalibrateReferenceLow": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.fFrequency": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fLastStd": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fLastWeight": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fMaxStdAutoTare": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fMaxStdValidation": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.fMaxTotalTareLimit": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fMaxWeightDeviationAutoTare": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fMaxWeightDeviationValidation": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.fNotchFrequency": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.fRawAmplitudeSignal": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fRawHigh": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fRawLow": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fRelativeWeightLimit": 3,
@@ -11456,11 +12240,6 @@
                 "ADS.PLC1.GVL_WEIGHING_HMI.fThresholdWeightAutoTare": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fThresholdWeightValidation": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fWeight": 3,
-                "ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn1": 3,
-                "ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn2": 3,
-                "ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn3": 3,
-                "ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn4": 3,
-                "ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn5": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fc1": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fc2": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.fc3": 3,
@@ -11469,20 +12248,29 @@
                 "ADS.PLC1.GVL_WEIGHING_HMI.nActualValidationSamplesAutoTare": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nActualValidationSamplesValidation": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nActualWindowLenght": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.nFilterOrder": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn1": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn2": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn3": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn4": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn5": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nNumCalibrationSamples": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.nNumTareSamples": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn1": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn2": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn3": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn4": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn5": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.nSamplesToFilter": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nValidationSamplesAutoTare": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nValidationSamplesValidation": 3,
                 "ADS.PLC1.GVL_WEIGHING_HMI.nWindowLenght": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.nWindowSizeMovAvg1": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.nWindowSizeMovAvg2": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.nWindowSizeMovAvg3": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.nWindowSizeMovAvg4": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.nWindowSizeMovAvg5": 3,
+                "ADS.PLC1.GVL_WEIGHING_HMI.rCutOff": 3,
                 "ADS.PLC1.MAIN.fbDynamicWeighing.stParamsWeighing.Validation.fThresholdWeight": 3,
                 "ChangeUserSettings": 3,
                 "ConfirmAlarm": 3,

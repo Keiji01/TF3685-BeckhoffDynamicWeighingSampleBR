@@ -1,6 +1,6 @@
 <div id="SWFilters" data-tchmi-type="TcHmi.Controls.System.TcHmiContent" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-zindex="1" data-tchmi-height-mode="Content">
 
-<div id="TcHmiKeyboard_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiKeyboard" data-tchmi-height="250" data-tchmi-height-unit="px" data-tchmi-label-font-size="14" data-tchmi-layout-file="KeyboardLayouts/Numpad (plusminus).keyboard.json" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-scale-mode="ScaleToFit" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-bottom="0" data-tchmi-visibility="Visible" data-tchmi-zindex="1" data-tchmi-creator-visibility="Visible">
+<div id="TcHmiKeyboard_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiKeyboard" data-tchmi-height="250" data-tchmi-height-unit="px" data-tchmi-label-font-size="14" data-tchmi-layout-file="KeyboardLayouts/Numpad (plusminus).keyboard.json" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-scale-mode="ScaleToFit" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-bottom="0" data-tchmi-visibility="Collapsed" data-tchmi-zindex="3" data-tchmi-creator-visibility="Visible">
 <script data-tchmi-target-attribute="data-tchmi-indirect-input-padding" type="application/json">
 {
   "top": 3,
@@ -218,6 +218,17 @@
                   "value": "Visible"
                 },
                 "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_1::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/Visibility",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
               }
             ]
           },
@@ -238,6 +249,17 @@
                   "value": "Collapsed"
                 },
                 "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_1::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/Visibility",
+                  "value": "Visible"
+                },
+                "asyncWait": true
               }
             ]
           },
@@ -252,6 +274,17 @@
                 "objectType": "WriteToSymbol",
                 "active": true,
                 "symbolExpression": "%ctrl%PTn_1::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:framework#/definitions/Visibility",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_1::Visibility%/ctrl%",
                 "value": {
                   "objectType": "StaticValue",
                   "valueType": "tchmi:framework#/definitions/Visibility",
@@ -302,7 +335,9 @@
   "bottomUnit": "px"
 }
 </script>
-<div id="PTn_1" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/PTn.usercontrol" data-tchmi-top="100" data-tchmi-top-unit="px" data-tchmi-width="100.0" data-tchmi-width-unit="%" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value" data-tchmi-zindex="2" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_2%/ctrl%" data-tchmi-visibility="Visible" data-tchmi-kp="%s%ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn1|BindingMode=TwoWay%/s%" data-tchmi-fc="%s%ADS.PLC1.GVL_WEIGHING_HMI.fc1|BindingMode=TwoWay%/s%" data-tchmi-samplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.fSamplingRatePTn1|BindingMode=TwoWay%/s%" data-tchmi-actualkp="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn1::stConfig::fKp|BindingMode=TwoWay%/s%" data-tchmi-actualfc="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn1::stConfig::fT1|BindingMode=TwoWay%/s%" data-tchmi-actualsamplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn1::stConfig::fSamplingRate|BindingMode=TwoWay%/s%" data-tchmi-updateparams="%s%ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn1|BindingMode=TwoWay%/s%" data-tchmi-order="%s%ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn1|BindingMode=TwoWay%/s%" data-tchmi-actualorder="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn1::stConfig::nOrder|BindingMode=TwoWay%/s%">
+<div id="PTn_1" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/PTn.usercontrol" data-tchmi-top="100" data-tchmi-top-unit="px" data-tchmi-width="100.0" data-tchmi-width-unit="%" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value" data-tchmi-zindex="2" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_2%/ctrl%" data-tchmi-visibility="Collapsed" data-tchmi-kp="%s%ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn1|BindingMode=TwoWay%/s%" data-tchmi-fc="%s%ADS.PLC1.GVL_WEIGHING_HMI.fc1|BindingMode=TwoWay%/s%" data-tchmi-samplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.fSamplingRatePTn1|BindingMode=TwoWay%/s%" data-tchmi-updateparams="%s%ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn1|BindingMode=TwoWay%/s%" data-tchmi-order="%s%ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn1|BindingMode=TwoWay%/s%" data-tchmi-actualkp="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.0.fKp%/s%" data-tchmi-actualfc="%s%ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi.0%/s%" data-tchmi-actualsamplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.0.fSamplingRate%/s%" data-tchmi-actualorder="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.0.nOrder%/s%">
+</div>
+<div id="MovingAvg_1" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/MovingAvg.usercontrol" data-tchmi-top="100" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value" data-tchmi-nwindowsize="%s%ADS.PLC1.GVL_WEIGHING_HMI.nWindowSizeMovAvg1%/s%" data-tchmi-bupdateparams="%s%ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureMovAvg1%/s%" data-tchmi-visibility="Collapsed" data-tchmi-nactualwindowsize="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI.0.nSamplesToFilter%/s%">
 </div>
 </div>
 
@@ -370,70 +405,45 @@
         
     
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
-  {
-    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onUserInteractionFinished",
-    "actions": [
-      {
-        "objectType": "SwitchCase",
-        "compare": {
-          "objectType": "Symbol",
-          "symbolExpression": "%ctrl%FilterComboBox2::SelectedText%/ctrl%"
-        },
-        "cases": [
-          {
-            "caseValue": {
-              "objectType": "StaticValue",
-              "value": "PTn"
+    [
+        {
+        "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onUserInteractionFinished",
+        "actions": [
+            {
+            "objectType": "SwitchCase",
+            "active": true,
+            "compare": {
+                "objectType": "Symbol",
+                "valueType": "tchmi:general#/definitions/String",
+                "symbolExpression": "%ctrl%FilterComboBox2::SelectedText%/ctrl%"
             },
-            "actions": [
-              {
-                "objectType": "WriteToSymbol",
-                "symbolExpression": "%ctrl%PTn_2::Visibility%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "value": "Visible"
+            "cases": [
+                {
+                "caseValue": { "objectType": "StaticValue", "valueType": "tchmi:general#/definitions/String", "value": "PTn" },
+                "actions": [
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%PTn_2::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "valueType": "tchmi:framework#/definitions/Visibility", "value": "Visible" } },
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%MovingAvg_2::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "valueType": "tchmi:framework#/definitions/Visibility", "value": "Collapsed" } }
+                ]
+                },
+                {
+                "caseValue": { "objectType": "StaticValue", "valueType": "tchmi:general#/definitions/String", "value": "MovingAverage" },
+                "actions": [
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%PTn_2::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "valueType": "tchmi:framework#/definitions/Visibility", "value": "Collapsed" } },
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%MovingAvg_2::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "valueType": "tchmi:framework#/definitions/Visibility", "value": "Visible" } }
+                ]
+                },
+                {
+                "caseValue": { "objectType": "StaticValue", "valueType": "tchmi:general#/definitions/String", "value": "Disabled" },
+                "actions": [
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%PTn_2::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "valueType": "tchmi:framework#/definitions/Visibility", "value": "Collapsed" } },
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%MovingAvg_2::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "valueType": "tchmi:framework#/definitions/Visibility", "value": "Collapsed" } }
+                ]
                 }
-              }
             ]
-          },
-          {
-            "caseValue": {
-              "objectType": "StaticValue",
-              "value": "MovingAverage"
-            },
-            "actions": [
-              {
-                "objectType": "WriteToSymbol",
-                "symbolExpression": "%ctrl%PTn_2::Visibility%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "value": "Collapsed"
-                }
-              }
-            ]
-          },
-          {
-            "caseValue": {
-              "objectType": "StaticValue",
-              "value": "Disabled"
-            },
-            "actions": [
-              {
-                "objectType": "WriteToSymbol",
-                "symbolExpression": "%ctrl%PTn_2::Visibility%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "value": "Collapsed"
-                }
-              }
-            ]
-          }
+            }
         ]
-      }
+        }
     ]
-  }
-]
 </script>
 </div>
 
@@ -445,7 +455,9 @@
   "color": "rgba(246, 246, 246, 1)"
 }
 </script>
-<div id="PTn_2" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-top="100" data-tchmi-top-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-target-user-control="UC/PTn.usercontrol" data-tchmi-visibility="Visible" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_2%/ctrl%" data-tchmi-kp="%s%ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn2|BindingMode=TwoWay%/s%" data-tchmi-fc="%s%ADS.PLC1.GVL_WEIGHING_HMI.fc2|BindingMode=TwoWay%/s%" data-tchmi-samplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.fSamplingRatePTn2|BindingMode=TwoWay%/s%" data-tchmi-actualkp="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn2::stConfig::fKp|BindingMode=TwoWay%/s%" data-tchmi-actualfc="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn2::stConfig::fT1|BindingMode=TwoWay%/s%" data-tchmi-actualsamplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn2::stConfig::fSamplingRate|BindingMode=TwoWay%/s%" data-tchmi-updateparams="%s%ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn2|BindingMode=TwoWay%/s%" data-tchmi-order="%s%ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn2|BindingMode=TwoWay%/s%" data-tchmi-actualorder="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn2::stConfig::nOrder|BindingMode=TwoWay%/s%" data-tchmi-zindex="2" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value">
+<div id="PTn_2" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-top="100" data-tchmi-top-unit="px" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-target-user-control="UC/PTn.usercontrol" data-tchmi-visibility="Collapsed" data-tchmi-kbobj="%ctrl%TcHmiKeyboard_2%/ctrl%" data-tchmi-kp="%s%ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn2|BindingMode=TwoWay%/s%" data-tchmi-fc="%s%ADS.PLC1.GVL_WEIGHING_HMI.fc2|BindingMode=TwoWay%/s%" data-tchmi-samplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.fSamplingRatePTn2|BindingMode=TwoWay%/s%" data-tchmi-updateparams="%s%ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn2|BindingMode=TwoWay%/s%" data-tchmi-order="%s%ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn2|BindingMode=TwoWay%/s%" data-tchmi-zindex="2" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value" data-tchmi-actualkp="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.1.fKp%/s%" data-tchmi-actualfc="%s%ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi.1%/s%" data-tchmi-actualsamplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.1.fSamplingRate%/s%" data-tchmi-actualorder="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.1.nOrder%/s%">
+</div>
+<div id="MovingAvg_2" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/MovingAvg.usercontrol" data-tchmi-top="100" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value" data-tchmi-nwindowsize="%s%ADS.PLC1.GVL_WEIGHING_HMI.nWindowSizeMovAvg2%/s%" data-tchmi-bupdateparams="%s%ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureMovAvg2%/s%" data-tchmi-visibility="Collapsed" data-tchmi-nactualwindowsize="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI.1.nSamplesToFilter%/s%">
 </div>
 </div>
 
@@ -503,70 +515,45 @@
         
     
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
-  {
-    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onUserInteractionFinished",
-    "actions": [
-      {
-        "objectType": "SwitchCase",
-        "compare": {
-          "objectType": "Symbol",
-          "symbolExpression": "%ctrl%FilterComboBox3::SelectedText%/ctrl%"
-        },
-        "cases": [
-          {
-            "caseValue": {
-              "objectType": "StaticValue",
-              "value": "PTn"
+    [
+        {
+        "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onUserInteractionFinished",
+        "actions": [
+            {
+            "objectType": "SwitchCase",
+            "active": true,
+            "compare": {
+                "objectType": "Symbol",
+                "valueType": "tchmi:general#/definitions/String",
+                "symbolExpression": "%ctrl%FilterComboBox3::SelectedText%/ctrl%"
             },
-            "actions": [
-              {
-                "objectType": "WriteToSymbol",
-                "symbolExpression": "%ctrl%PTn_3::Visibility%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "value": "Visible"
+            "cases": [
+                {
+                "caseValue": { "objectType": "StaticValue", "value": "PTn" },
+                "actions": [
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%PTn_3::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Visible" } },
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%MovingAvg_3::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Collapsed" } }
+                ]
+                },
+                {
+                "caseValue": { "objectType": "StaticValue", "value": "MovingAverage" },
+                "actions": [
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%PTn_3::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Collapsed" } },
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%MovingAvg_3::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Visible" } }
+                ]
+                },
+                {
+                "caseValue": { "objectType": "StaticValue", "value": "Disabled" },
+                "actions": [
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%PTn_3::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Collapsed" } },
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%MovingAvg_3::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Collapsed" } }
+                ]
                 }
-              }
             ]
-          },
-          {
-            "caseValue": {
-              "objectType": "StaticValue",
-              "value": "MovingAverage"
-            },
-            "actions": [
-              {
-                "objectType": "WriteToSymbol",
-                "symbolExpression": "%ctrl%PTn_3::Visibility%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "value": "Collapsed"
-                }
-              }
-            ]
-          },
-          {
-            "caseValue": {
-              "objectType": "StaticValue",
-              "value": "Disabled"
-            },
-            "actions": [
-              {
-                "objectType": "WriteToSymbol",
-                "symbolExpression": "%ctrl%PTn_3::Visibility%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "value": "Collapsed"
-                }
-              }
-            ]
-          }
+            }
         ]
-      }
+        }
     ]
-  }
-]
 </script>
 </div>
 
@@ -578,19 +565,21 @@
          data-tchmi-height="100"
          data-tchmi-height-unit="%"
          data-tchmi-target-user-control="UC/PTn.usercontrol"
-         data-tchmi-visibility="Visible"
+         data-tchmi-visibility="Collapsed"
          data-tchmi-kbobj="%ctrl%TcHmiKeyboard_2%/ctrl%"
          data-tchmi-kp="%s%ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn3|BindingMode=TwoWay%/s%"
          data-tchmi-fc="%s%ADS.PLC1.GVL_WEIGHING_HMI.fc3|BindingMode=TwoWay%/s%"
          data-tchmi-samplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.fSamplingRatePTn3|BindingMode=TwoWay%/s%"
-         data-tchmi-actualkp="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn3::stConfig::fKp|BindingMode=TwoWay%/s%"
-         data-tchmi-actualfc="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn3::stConfig::fT1|BindingMode=TwoWay%/s%"
-         data-tchmi-actualsamplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn3::stConfig::fSamplingRate|BindingMode=TwoWay%/s%"
+
+
+
          data-tchmi-updateparams="%s%ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn3|BindingMode=TwoWay%/s%"
          data-tchmi-order="%s%ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn3|BindingMode=TwoWay%/s%"
-         data-tchmi-actualorder="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn3::stConfig::nOrder|BindingMode=TwoWay%/s%">
+ data-tchmi-actualkp="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.2.fKp%/s%" data-tchmi-actualfc="%s%ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi.2%/s%" data-tchmi-actualsamplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.2.fSamplingRate%/s%" data-tchmi-actualorder="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.2.nOrder%/s%">
     </div>
 
+<div id="MovingAvg_3" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/MovingAvg.usercontrol" data-tchmi-top="100" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value" data-tchmi-nwindowsize="%s%ADS.PLC1.GVL_WEIGHING_HMI.nWindowSizeMovAvg3%/s%" data-tchmi-bupdateparams="%s%ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureMovAvg3%/s%" data-tchmi-visibility="Collapsed" data-tchmi-nactualwindowsize="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI.2.nSamplesToFilter%/s%">
+</div>
 </div>
 
 <div id="Container4"
@@ -647,70 +636,43 @@
         
     
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
-  {
-    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onUserInteractionFinished",
-    "actions": [
-      {
-        "objectType": "SwitchCase",
-        "compare": {
-          "objectType": "Symbol",
-          "symbolExpression": "%ctrl%FilterComboBox4::SelectedText%/ctrl%"
-        },
-        "cases": [
-          {
-            "caseValue": {
-              "objectType": "StaticValue",
-              "value": "PTn"
+    [
+        {
+        "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onUserInteractionFinished",
+        "actions": [
+            {
+            "objectType": "SwitchCase",
+            "compare": {
+                "objectType": "Symbol",
+                "symbolExpression": "%ctrl%FilterComboBox4::SelectedText%/ctrl%"
             },
-            "actions": [
-              {
-                "objectType": "WriteToSymbol",
-                "symbolExpression": "%ctrl%PTn_4::Visibility%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "value": "Visible"
+            "cases": [
+                {
+                "caseValue": { "objectType": "StaticValue", "value": "PTn" },
+                "actions": [
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%PTn_4::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Visible" } },
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%MovingAvg_4::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Collapsed" } }
+                ]
+                },
+                {
+                "caseValue": { "objectType": "StaticValue", "value": "MovingAverage" },
+                "actions": [
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%PTn_4::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Collapsed" } },
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%MovingAvg_4::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Visible" } }
+                ]
+                },
+                {
+                "caseValue": { "objectType": "StaticValue", "value": "Disabled" },
+                "actions": [
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%PTn_4::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Collapsed" } },
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%MovingAvg_4::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Collapsed" } }
+                ]
                 }
-              }
             ]
-          },
-          {
-            "caseValue": {
-              "objectType": "StaticValue",
-              "value": "MovingAverage"
-            },
-            "actions": [
-              {
-                "objectType": "WriteToSymbol",
-                "symbolExpression": "%ctrl%PTn_4::Visibility%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "value": "Collapsed"
-                }
-              }
-            ]
-          },
-          {
-            "caseValue": {
-              "objectType": "StaticValue",
-              "value": "Disabled"
-            },
-            "actions": [
-              {
-                "objectType": "WriteToSymbol",
-                "symbolExpression": "%ctrl%PTn_4::Visibility%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "value": "Collapsed"
-                }
-              }
-            ]
-          }
+            }
         ]
-      }
+        }
     ]
-  }
-]
 </script>
 </div>
 
@@ -722,19 +684,21 @@
          data-tchmi-height="100"
          data-tchmi-height-unit="%"
          data-tchmi-target-user-control="UC/PTn.usercontrol"
-         data-tchmi-visibility="Visible"
+         data-tchmi-visibility="Collapsed"
          data-tchmi-kbobj="%ctrl%TcHmiKeyboard_2%/ctrl%"
          data-tchmi-kp="%s%ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn4|BindingMode=TwoWay%/s%"
          data-tchmi-fc="%s%ADS.PLC1.GVL_WEIGHING_HMI.fc4|BindingMode=TwoWay%/s%"
          data-tchmi-samplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.fSamplingRatePTn4|BindingMode=TwoWay%/s%"
-         data-tchmi-actualkp="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn4::stConfig::fKp|BindingMode=TwoWay%/s%"
-         data-tchmi-actualfc="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn4::stConfig::fT1|BindingMode=TwoWay%/s%"
-         data-tchmi-actualsamplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn4::stConfig::fSamplingRate|BindingMode=TwoWay%/s%"
+
+
+
          data-tchmi-updateparams="%s%ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn4|BindingMode=TwoWay%/s%"
          data-tchmi-order="%s%ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn4|BindingMode=TwoWay%/s%"
-         data-tchmi-actualorder="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn4::stConfig::nOrder|BindingMode=TwoWay%/s%">
+ data-tchmi-actualkp="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.3.fKp%/s%" data-tchmi-actualfc="%s%ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi.3%/s%" data-tchmi-actualsamplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.3.fSamplingRate%/s%" data-tchmi-actualorder="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.3.nOrder%/s%">
     </div>
 
+<div id="MovingAvg_4" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/MovingAvg.usercontrol" data-tchmi-top="100" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value" data-tchmi-nwindowsize="%s%ADS.PLC1.GVL_WEIGHING_HMI.nWindowSizeMovAvg4%/s%" data-tchmi-bupdateparams="%s%ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureMovAvg4%/s%" data-tchmi-visibility="Collapsed" data-tchmi-nactualwindowsize="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI.3.nSamplesToFilter%/s%">
+</div>
 </div>
 
 <div id="Container5"
@@ -791,70 +755,43 @@
         
     
 <script data-tchmi-target-attribute="data-tchmi-trigger" type="application/json">
-[
-  {
-    "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onUserInteractionFinished",
-    "actions": [
-      {
-        "objectType": "SwitchCase",
-        "compare": {
-          "objectType": "Symbol",
-          "symbolExpression": "%ctrl%FilterComboBox5::SelectedText%/ctrl%"
-        },
-        "cases": [
-          {
-            "caseValue": {
-              "objectType": "StaticValue",
-              "value": "PTn"
+    [
+        {
+        "event": "%ctx%owner::Id|EventRegistrationMode=Resolve%/ctx%.onUserInteractionFinished",
+        "actions": [
+            {
+            "objectType": "SwitchCase",
+            "compare": {
+                "objectType": "Symbol",
+                "symbolExpression": "%ctrl%FilterComboBox5::SelectedText%/ctrl%"
             },
-            "actions": [
-              {
-                "objectType": "WriteToSymbol",
-                "symbolExpression": "%ctrl%PTn_5::Visibility%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "value": "Visible"
+            "cases": [
+                {
+                "caseValue": { "objectType": "StaticValue", "value": "PTn" },
+                "actions": [
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%PTn_5::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Visible" } },
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%MovingAvg_5::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Collapsed" } }
+                ]
+                },
+                {
+                "caseValue": { "objectType": "StaticValue", "value": "MovingAverage" },
+                "actions": [
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%PTn_5::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Collapsed" } },
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%MovingAvg_5::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Visible" } }
+                ]
+                },
+                {
+                "caseValue": { "objectType": "StaticValue", "value": "Disabled" },
+                "actions": [
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%PTn_5::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Collapsed" } },
+                    { "objectType": "WriteToSymbol", "symbolExpression": "%ctrl%MovingAvg_5::Visibility%/ctrl%", "value": { "objectType": "StaticValue", "value": "Collapsed" } }
+                ]
                 }
-              }
             ]
-          },
-          {
-            "caseValue": {
-              "objectType": "StaticValue",
-              "value": "MovingAverage"
-            },
-            "actions": [
-              {
-                "objectType": "WriteToSymbol",
-                "symbolExpression": "%ctrl%PTn_5::Visibility%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "value": "Collapsed"
-                }
-              }
-            ]
-          },
-          {
-            "caseValue": {
-              "objectType": "StaticValue",
-              "value": "Disabled"
-            },
-            "actions": [
-              {
-                "objectType": "WriteToSymbol",
-                "symbolExpression": "%ctrl%PTn_5::Visibility%/ctrl%",
-                "value": {
-                  "objectType": "StaticValue",
-                  "value": "Collapsed"
-                }
-              }
-            ]
-          }
+            }
         ]
-      }
+        }
     ]
-  }
-]
 </script>
 </div>
 
@@ -866,19 +803,21 @@
          data-tchmi-height="100"
          data-tchmi-height-unit="%"
          data-tchmi-target-user-control="UC/PTn.usercontrol"
-         data-tchmi-visibility="Visible"
+         data-tchmi-visibility="Collapsed"
          data-tchmi-kbobj="%ctrl%TcHmiKeyboard_2%/ctrl%"
          data-tchmi-kp="%s%ADS.PLC1.GVL_WEIGHING_HMI.nGainPTn5|BindingMode=TwoWay%/s%"
          data-tchmi-fc="%s%ADS.PLC1.GVL_WEIGHING_HMI.fc5|BindingMode=TwoWay%/s%"
          data-tchmi-samplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.fSamplingRatePTn5|BindingMode=TwoWay%/s%"
-         data-tchmi-actualkp="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn5::stConfig::fKp|BindingMode=TwoWay%/s%"
-         data-tchmi-actualfc="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn5::stConfig::fT1|BindingMode=TwoWay%/s%"
-         data-tchmi-actualsamplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn5::stConfig::fSamplingRate|BindingMode=TwoWay%/s%"
+
+
+
          data-tchmi-updateparams="%s%ADS.PLC1.GVL_WEIGHING_HMI.bReconfigurePTn5|BindingMode=TwoWay%/s%"
          data-tchmi-order="%s%ADS.PLC1.GVL_WEIGHING_HMI.nOrderPTn5|BindingMode=TwoWay%/s%"
-         data-tchmi-actualorder="%s%ADS.PLC1.GVL_WEIGHING_HMI.fbFilterPTn5::stConfig::nOrder|BindingMode=TwoWay%/s%">
+ data-tchmi-actualkp="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.4.fKp%/s%" data-tchmi-actualfc="%s%ADS.PLC1.GVL_WEIGHING_HMI.aFcHmi.4%/s%" data-tchmi-actualsamplingrate="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.4.fSamplingRate%/s%" data-tchmi-actualorder="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_PTn_HMI.4.nOrder%/s%">
     </div>
 
+<div id="MovingAvg_5" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="%" data-tchmi-left="0" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/MovingAvg.usercontrol" data-tchmi-top="100" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="%" data-tchmi-width-mode="Value" data-tchmi-height-mode="Value" data-tchmi-nwindowsize="%s%ADS.PLC1.GVL_WEIGHING_HMI.nWindowSizeMovAvg5%/s%" data-tchmi-bupdateparams="%s%ADS.PLC1.GVL_WEIGHING_HMI.bReconfigureMovAvg5%/s%" data-tchmi-visibility="Collapsed" data-tchmi-nactualwindowsize="%s%ADS.PLC1.GVL_WEIGHING_HMI.aST_MovAvg_HMI.4.nSamplesToFilter%/s%">
+</div>
 </div>
 
 </div>
@@ -894,9 +833,534 @@
         "symbolExpression": "%ctrl%TcHmiKeyboard_2::Visibility%/ctrl%",
         "value": {
           "objectType": "StaticValue",
-          "valueType": "tchmi:framework#/definitions/Visibility",
+          "valueType": "tchmi:general#/definitions/String",
           "value": "Collapsed"
         },
+        "asyncWait": true
+      },
+      {
+        "objectType": "SwitchCase",
+        "active": true,
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%s%ADS.PLC1.GVL_WEIGHING_HMI.EFilter1%/s%"
+        },
+        "cases": [
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": null,
+              "value": 1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%PTn_1::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Visible"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_1::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": null,
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%PTn_1::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_1::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Visible"
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": null,
+              "value": 0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%PTn_1::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_1::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "SwitchCase",
+        "active": true,
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%s%ADS.PLC1.GVL_WEIGHING_HMI.EFilter2%/s%"
+        },
+        "cases": [
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": null,
+              "value": 1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%PTn_2::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Visible"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_2::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": null,
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%PTn_2::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_2::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Visible"
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": null,
+              "value": 0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%PTn_2::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_2::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "SwitchCase",
+        "active": true,
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%s%ADS.PLC1.GVL_WEIGHING_HMI.EFilter3%/s%"
+        },
+        "cases": [
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": null,
+              "value": 1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%PTn_3::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Visible"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_3::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": null,
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%PTn_3::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_3::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Visible"
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": null,
+              "value": 0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%PTn_3::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_3::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "SwitchCase",
+        "active": true,
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%s%ADS.PLC1.GVL_WEIGHING_HMI.EFilter4%/s%"
+        },
+        "cases": [
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": null,
+              "value": 1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%PTn_4::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Visible"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_4::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": null,
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%PTn_4::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_4::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Visible"
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": null,
+              "value": 0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%PTn_4::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_4::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
+        "asyncWait": true
+      },
+      {
+        "objectType": "SwitchCase",
+        "active": true,
+        "compare": {
+          "objectType": "Symbol",
+          "valueType": "tchmi:general#/definitions/String",
+          "symbolExpression": "%s%ADS.PLC1.GVL_WEIGHING_HMI.EFilter5%/s%"
+        },
+        "cases": [
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": null,
+              "value": 1
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%PTn_5::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Visible"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_5::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": null,
+              "value": 2
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%PTn_5::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_5::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Visible"
+                },
+                "asyncWait": true
+              }
+            ]
+          },
+          {
+            "caseValue": {
+              "objectType": "StaticValue",
+              "valueType": null,
+              "value": 0
+            },
+            "actions": [
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%PTn_5::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              },
+              {
+                "objectType": "WriteToSymbol",
+                "active": true,
+                "symbolExpression": "%ctrl%MovingAvg_5::Visibility%/ctrl%",
+                "value": {
+                  "objectType": "StaticValue",
+                  "valueType": "tchmi:general#/definitions/String",
+                  "value": "Collapsed"
+                },
+                "asyncWait": true
+              }
+            ]
+          }
+        ],
         "asyncWait": true
       }
     ]

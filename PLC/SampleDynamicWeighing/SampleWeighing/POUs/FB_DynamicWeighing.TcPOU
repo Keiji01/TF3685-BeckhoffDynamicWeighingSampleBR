@@ -175,7 +175,7 @@ VAR_INPUT
 END_VAR
 ]]></Declaration>
       <Implementation>
-        <ST><![CDATA[(* Actual fbWeighing Block Cfg *)
+        <ST><![CDATA[ (* Actual fbWeighing Block Cfg *)
 nActualWindowLenght 					:= fbWeighing.stConfig.nWindowLength;
 nActualValidationSamplesValidation		:= fbWeighing.stConfig.Validation.nValidationSamples;
 fActualThresholdWeightValidation 		:= fbWeighing.stConfig.Validation.fThresholdWeight;

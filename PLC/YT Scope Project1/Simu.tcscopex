@@ -29,7 +29,7 @@
   <KeepPreviousImageExports>true</KeepPreviousImageExports>
   <Layout>&lt;?xml version="1.0" encoding="utf-16"?&gt;
 &lt;Layout&gt;
-  &lt;Window Guid="8260c6ae-b808-4650-b0bf-8318966c1c00" LastFocused="134184934817080036" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="250, 400" DocumentWindowGroupGuid="0c0d0d4e-ae0a-4944-8eb2-637a0b48dd2f" DocumentIndexInWindowGroup="0" DocumentSplitPath="0" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
+  &lt;Window Guid="8260c6ae-b808-4650-b0bf-8318966c1c00" LastFocused="134186575775866929" DockedSize="200" PopupSize="0" FloatingLocation="-1, -1" FloatingSize="550, 400" LastOpenDockSituation="Document" LastFixedDockSituation="Document" LastFixedDockLocation="Right" LastFloatingWindowGuid="00000000-0000-0000-0000-000000000000" LastDockContainerCount="0" LastDockContainerIndex="0" DockedWorkingSize="250, 400" DockedWindowGroupGuid="00000000-0000-0000-0000-000000000000" DockedIndexInWindowGroup="0" DockedSplitPath="0" DocumentWorkingSize="250, 400" DocumentWindowGroupGuid="0c0d0d4e-ae0a-4944-8eb2-637a0b48dd2f" DocumentIndexInWindowGroup="0" DocumentSplitPath="0" FloatingWorkingSize="250, 400" FloatingWindowGroupGuid="00000000-0000-0000-0000-000000000000" FloatingIndexInWindowGroup="0" FloatingSplitPath="0" /&gt;
   &lt;DocumentContainer Dock="5"&gt;
     &lt;SplitLayoutSystem WorkingSize="250, 400" SplitMode="0"&gt;
       &lt;ControlLayoutSystem WorkingSize="250, 400" Guid="0c0d0d4e-ae0a-4944-8eb2-637a0b48dd2f" Collapsed="0" SelectedControl="8260c6ae-b808-4650-b0bf-8318966c1c00"&gt;
@@ -84,7 +84,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>22c344ac-4afd-4b4e-81fc-29e17b0316b0</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>435096</IndexOffset>
+          <IndexOffset>435256</IndexOffset>
           <IsEvent>false</IsEvent>
           <IsHistorical>false</IsHistorical>
           <IsTimeline>false</IsTimeline>
@@ -182,7 +182,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>f7114af3-3f7b-4f04-a3f6-5f2d59f659e3</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>435112</IndexOffset>
+          <IndexOffset>435272</IndexOffset>
           <IsEvent>false</IsEvent>
           <IsHistorical>false</IsHistorical>
           <IsTimeline>false</IsTimeline>
@@ -280,7 +280,7 @@
           <ForceOversampling>false</ForceOversampling>
           <Guid>09333c4e-9e63-4055-afc4-5a0d81c65afb</Guid>
           <IndexGroup>16448</IndexGroup>
-          <IndexOffset>435104</IndexOffset>
+          <IndexOffset>435264</IndexOffset>
           <IsEvent>false</IsEvent>
           <IsHistorical>false</IsHistorical>
           <IsTimeline>false</IsTimeline>
@@ -857,7 +857,7 @@
                     </TimeShiftStyle>
                   </SubMember>
                   <Title>MeasurementMemberBase</Title>
-                  <Visible>false</Visible>
+                  <Visible>true</Visible>
                 </ChannelStyle>
                 <NameRelationInfo AssemblyName="TwinCAT.Measurement.Scope.API.Model">
                   <Comment />
@@ -974,13 +974,13 @@
           <MarkerType>Circle</MarkerType>
           <Name>Time Marker</Name>
           <Orientation>Vertical</Orientation>
-          <Position>2147483647</Position>
+          <Position>0</Position>
           <ShowFullArray>true</ShowFullArray>
           <ShowPosition>false</ShowPosition>
           <ShowTitle>Name</ShowTitle>
           <SortPriority>100</SortPriority>
           <SubMember />
-          <TimePosition>134184935329510000</TimePosition>
+          <TimePosition>134186647464510000</TimePosition>
           <Title>Marker</Title>
           <UseScientificNotation>UseDefault</UseScientificNotation>
           <ValuePrecision>4</ValuePrecision>
@@ -999,13 +999,13 @@
           <MarkerType>Circle</MarkerType>
           <Name>Time Marker (1)</Name>
           <Orientation>Vertical</Orientation>
-          <Position>2147483647</Position>
+          <Position>0</Position>
           <ShowFullArray>true</ShowFullArray>
           <ShowPosition>false</ShowPosition>
           <ShowTitle>Name</ShowTitle>
           <SortPriority>100</SortPriority>
           <SubMember />
-          <TimePosition>134184935329510000</TimePosition>
+          <TimePosition>134186647464510000</TimePosition>
           <Title>Marker</Title>
           <UseScientificNotation>UseDefault</UseScientificNotation>
           <ValuePrecision>4</ValuePrecision>

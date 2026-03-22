@@ -131,6 +131,9 @@
     <Content Include="Pages\Calibration.content">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Pages\Library.content">
+      <SubType>Content</SubType>
+    </Content>
     <Content Include="PopUps\TuneAutoTare.content">
       <SubType>Content</SubType>
     </Content>
@@ -140,6 +143,7 @@
     <Content Include="Server\ADS\ADS.Config.default.json">
       <SubType>Content</SubType>
     </Content>
+    <Content Include="Server\ADS\ADS.Config.default.json" />
     <Content Include="UC\BigNumWithKbFloat.usercontrol">
       <SubType>Content</SubType>
     </Content>
@@ -153,6 +157,13 @@
     <Content Include="UC\IntWithKbSmall.usercontrol.json">
       <SubType>Content</SubType>
       <DependentUpon>UC\IntWithKbSmall.usercontrol</DependentUpon>
+    </Content>
+    <Content Include="UC\MovingAvg.usercontrol">
+      <SubType>Content</SubType>
+    </Content>
+    <Content Include="UC\MovingAvg.usercontrol.json">
+      <SubType>Content</SubType>
+      <DependentUpon>UC\MovingAvg.usercontrol</DependentUpon>
     </Content>
     <Content Include="UC\RealWithKbSmall.usercontrol">
       <SubType>Content</SubType>

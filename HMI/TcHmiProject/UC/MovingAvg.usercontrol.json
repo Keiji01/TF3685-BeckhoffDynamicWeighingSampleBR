@@ -1,0 +1,58 @@
+{
+  "parameters": [
+    {
+      "allowSymbolExpressionsInObject": false,
+      "requiredOnCompile": false,
+      "bindable": true,
+      "propertySetterName": "setNWindowSize",
+      "propertyGetterName": "getNWindowSize",
+      "refTo": "",
+      "name": "data-tchmi-nwindowsize",
+      "displayName": "nWindowSize",
+      "visible": true,
+      "type": "tchmi:general#/definitions/UINT",
+      "category": "",
+      "description": "",
+      "readOnly": false,
+      "heritable": true,
+      "propertyName": "nWindowSize"
+    },
+    {
+      "allowSymbolExpressionsInObject": false,
+      "requiredOnCompile": false,
+      "bindable": true,
+      "propertySetterName": "setBUpdateParams",
+      "propertyGetterName": "getBUpdateParams",
+      "refTo": "",
+      "name": "data-tchmi-bupdateparams",
+      "displayName": "bUpdateParams",
+      "visible": true,
+      "type": "tchmi:general#/definitions/BOOL",
+      "category": "",
+      "description": "",
+      "readOnly": false,
+      "heritable": true,
+      "propertyName": "bUpdateParams"
+    },
+    {
+      "allowSymbolExpressionsInObject": false,
+      "requiredOnCompile": false,
+      "bindable": true,
+      "propertySetterName": "setNActualWindowSize",
+      "propertyGetterName": "getNActualWindowSize",
+      "refTo": "",
+      "name": "data-tchmi-nactualwindowsize",
+      "displayName": "nActualWindowSize",
+      "visible": true,
+      "type": "tchmi:general#/definitions/UINT",
+      "category": "",
+      "description": "",
+      "readOnly": false,
+      "heritable": true,
+      "propertyName": "nActualWindowSize"
+    }
+  ],
+  "virtualRights": [],
+  "$schema": "./../../Packages/Beckhoff.TwinCAT.HMI.Framework.14.3.393/runtimes/native1.12-tchmi/Schema/UserControlConfig.Schema.json",
+  "description": ""
+}

@@ -1,0 +1,15 @@
+<div id="MovingAvg" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControl" data-tchmi-top="0" data-tchmi-left="0" data-tchmi-width="100" data-tchmi-height="100" data-tchmi-width-unit="%" data-tchmi-height-unit="%" data-tchmi-creator-viewport-width="500" data-tchmi-creator-viewport-height="500">
+
+<div id="SRTxtBlock_2" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="30" data-tchmi-height-unit="px" data-tchmi-left="9" data-tchmi-left-unit="px" data-tchmi-text="Window Size: " data-tchmi-top="75" data-tchmi-top-unit="px" data-tchmi-width="150" data-tchmi-width-unit="px" data-tchmi-word-wrap="True">
+</div>
+<div id="SamplingRateNumKb_2" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/FilterNumWithKb.usercontrol" data-tchmi-top="75" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-kbobj="%pp%KbObj%/pp%" data-tchmi-left="168" data-tchmi-width-mode="Content" data-tchmi-height-mode="Content" data-tchmi-number="%pp%nWindowSize%/pp%">
+</div>
+<div id="NewTxtBlock_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="168" data-tchmi-left-unit="px" data-tchmi-text="New:" data-tchmi-top="38" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-word-wrap="True">
+</div>
+<div id="ActualSRNumKb_2" data-tchmi-type="TcHmi.Controls.System.TcHmiUserControlHost" data-tchmi-height="100" data-tchmi-height-unit="px" data-tchmi-left-unit="px" data-tchmi-target-user-control="UC/FilterNumWithKb.usercontrol" data-tchmi-top="75" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-kbobj="%pp%KbObj%/pp%" data-tchmi-left="278" data-tchmi-width-mode="Content" data-tchmi-height-mode="Content" data-tchmi-is-enabled="False" data-tchmi-number="%pp%nActualWindowSize%/pp%">
+</div>
+<div id="ActualTxtBlock_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiTextblock" data-tchmi-height="26" data-tchmi-height-unit="px" data-tchmi-left="278" data-tchmi-left-unit="px" data-tchmi-text="Actual:" data-tchmi-top="38" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-word-wrap="True">
+</div>
+<div id="UpdateBtn_1" data-tchmi-type="TcHmi.Controls.Beckhoff.TcHmiButton" data-tchmi-height="50" data-tchmi-height-unit="px" data-tchmi-left="278" data-tchmi-left-unit="px" data-tchmi-text="Update Params" data-tchmi-top="115" data-tchmi-top-unit="px" data-tchmi-width="100" data-tchmi-width-unit="px" data-tchmi-word-wrap="True" data-tchmi-state-symbol="%pp%bUpdateParams%/pp%">
+</div>
+</div>

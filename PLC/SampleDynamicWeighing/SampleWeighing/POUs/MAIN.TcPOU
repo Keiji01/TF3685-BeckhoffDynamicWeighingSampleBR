@@ -39,27 +39,60 @@ VAR
 	
 	bInit				: BOOL;
 	bSuccess			: BOOL;
-	yFiltroEntrada		: LREAL;
-	yFiltroSaida		: LREAL;
-	yFiltroSaida2		: LREAL;
-	yFiltroSaida3		: LREAL;
-	yFiltroSaida4		: LREAL;
-	yFiltroSaida5		: LREAL;
 				
-	bSucceed			: BOOL;
 	bReset				: BOOL;
-	bSimulateRefLow: BOOL;
-	bSimulateRefHigh: BOOL;
+	bSimulateRefLow		: BOOL;
+	bSimulateRefHigh	: BOOL;
+
+	// Entrada
+	yFiltroEntrada 		: LREAL;
+
+	// Buffers intermediários (6 porque entrada + 5 estágios)
+	aFilterBuffer 		: ARRAY[0..5] OF LREAL;
+
+	// Tipo de filtro (0=Disabled, 1=PTn, 2=MovingAvg)
+	aFilterType 		: ARRAY[1..5] OF INT;
+
+	// FBs
+	aPTn		 		: ARRAY[1..5] OF FB_FTR_PTn;
+	aMovAvg 	 		: ARRAY[1..5] OF FB_FTR_MovAvg;
+	
+	// ===== PTn =====
+	aReconfigurePTn 	: ARRAY[1..5] OF BOOL;
+	aGainPTn        	: ARRAY[1..5] OF LREAL;
+	aTfc            	: ARRAY[1..5] OF LREAL;
+	aOrderPTn       	: ARRAY[1..5] OF UINT;
+	aSamplingPTn    	: ARRAY[1..5] OF UINT;
+	aST_PTn         	: ARRAY[1..5] OF ST_FTR_PTn;
+	aFc					: ARRAY[1..5] OF LREAL;
+
+	// ===== Moving Avg =====
+	aReconfigureMovAvg : ARRAY[1..5] OF BOOL;
+	aWindowMovAvg      : ARRAY[1..5] OF UDINT;
+	
+	// Controle
+	i : INT;
+	bSucceed : BOOL;
+
 END_VAR]]></Declaration>
     <Implementation>
       <ST><![CDATA[// Generate inputs FOR simulation
-IF bSimulateRefLow THEN
-	aRawInputNoise[1] := 150.0;
-ELSIF bSimulateRefHigh THEN
-	aRawInputNoise[1] := 1000.0;
+IF GVL_WEIGHING_HMI.bSimulate THEN
+	fRawAmplitudeSignal 	:= GVL_WEIGHING_HMI.fRawAmplitudeSignal;
+	fAbsoluteNoise 			:= GVL_WEIGHING_HMI.fAbsoluteNoise;
+	fFrequency 				:= GVL_WEIGHING_HMI.fFrequency;
+	
+	IF bSimulateRefLow THEN
+		aRawInputNoise[1] := 150.0;
+	ELSIF bSimulateRefHigh THEN
+		aRawInputNoise[1] := 1000.0;
+	ELSE
+		GenerateInputs();
+	END_IF
 ELSE
-	GenerateInputs();
+	aRawInputNoise[1] := GVL_IO.EL3356_RawInput; // Using same var from actFilterSignal to Simplify
 END_IF
+
 
 
 // Increase the weight continuously.
@@ -117,6 +150,7 @@ fbDynamicWeighing(aInput := aRawSignal,
 					stParamsComboFilter 		:= stParamsFilterIn,
 					stParamsScale 				:= stParamsScaleIn,
 					stParamsWeighing 			:= stParamsWeighingIn,
+					bDisableFilter				:= GVL_WEIGHING_HMI.bDisableEmbeddedFilter,
 					nNumCalibrationSamples 		:= GVL_WEIGHING_HMI.nNumCalibrationSamples,
 					nNumTareSamples 			:= GVL_WEIGHING_HMI.nNumTareSamples,
 					bAcceptCalibration			:= GVL_WEIGHING_HMI.bAcceptCalibration,
@@ -175,117 +209,131 @@ fbUPS(
     </Action>
     <Action Name="actFilterCfg" Id="{0cf4364e-9244-4f7b-854d-22c8669cd736}">
       <Implementation>
-        <ST><![CDATA[IF GVL_WEIGHING_HMI.bReconfigurePTn1 THEN
-	GVL_WEIGHING_HMI.STFilter1_PTn.fKp 				:= GVL_WEIGHING_HMI.nGainPTn1;
-	GVL_WEIGHING_HMI.STFilter1_PTn.fT1 				:= GVL_WEIGHING_HMI.Tfc1;
-	GVL_WEIGHING_HMI.STFilter1_PTn.nOrder 			:= GVL_WEIGHING_HMI.nOrderPTn1;
-	GVL_WEIGHING_HMI.STFilter1_PTn.fSamplingRate 	:= GVL_WEIGHING_HMI.fSamplingRatePTn1;
-	GVL_WEIGHING_HMI.STFilter1_PTn.nOversamples		:= 1;
-	GVL_WEIGHING_HMI.STFilter1_PTn.nChannels 		:= 1;	
+        <ST><![CDATA[// ===== PTn =====
+aReconfigurePTn[1] := GVL_WEIGHING_HMI.bReconfigurePTn1;
+aReconfigurePTn[2] := GVL_WEIGHING_HMI.bReconfigurePTn2;
+aReconfigurePTn[3] := GVL_WEIGHING_HMI.bReconfigurePTn3;
+aReconfigurePTn[4] := GVL_WEIGHING_HMI.bReconfigurePTn4;
+aReconfigurePTn[5] := GVL_WEIGHING_HMI.bReconfigurePTn5;
 
-	bSuccess := GVL_WEIGHING_HMI.fbFilterPTn1.Configure(stConfig:=GVL_WEIGHING_HMI.STFilter1_PTn);
-END_IF
+aGainPTn[1] := GVL_WEIGHING_HMI.nGainPTn1;
+aGainPTn[2] := GVL_WEIGHING_HMI.nGainPTn2;
+aGainPTn[3] := GVL_WEIGHING_HMI.nGainPTn3;
+aGainPTn[4] := GVL_WEIGHING_HMI.nGainPTn4;
+aGainPTn[5] := GVL_WEIGHING_HMI.nGainPTn5;
 
+aFc[1] := GVL_WEIGHING_HMI.fc1;
+aFc[2] := GVL_WEIGHING_HMI.fc2;
+aFc[3] := GVL_WEIGHING_HMI.fc3;
+aFc[4] := GVL_WEIGHING_HMI.fc4;
+aFc[5] := GVL_WEIGHING_HMI.fc5;
 
-IF bReset THEN
-	GVL_WEIGHING_HMI.fbFilterPTn1.Reset();
-END_IF
+aOrderPTn[1] := GVL_WEIGHING_HMI.nOrderPTn1;
+aOrderPTn[2] := GVL_WEIGHING_HMI.nOrderPTn2;
+aOrderPTn[3] := GVL_WEIGHING_HMI.nOrderPTn3;
+aOrderPTn[4] := GVL_WEIGHING_HMI.nOrderPTn4;
+aOrderPTn[5] := GVL_WEIGHING_HMI.nOrderPTn5;
 
-
-IF GVL_WEIGHING_HMI.bReconfigurePTn2 THEN
-	GVL_WEIGHING_HMI.STFilter2_PTn.fKp 				:= GVL_WEIGHING_HMI.nGainPTn2;
-	GVL_WEIGHING_HMI.STFilter2_PTn.fT1 				:= GVL_WEIGHING_HMI.Tfc2;
-	GVL_WEIGHING_HMI.STFilter2_PTn.nOrder 			:= GVL_WEIGHING_HMI.nOrderPTn2;
-	GVL_WEIGHING_HMI.STFilter2_PTn.fSamplingRate 	:= GVL_WEIGHING_HMI.fSamplingRatePTn2;
-	GVL_WEIGHING_HMI.STFilter2_PTn.nOversamples		:= 1;
-	GVL_WEIGHING_HMI.STFilter2_PTn.nChannels 		:= 1;	
-
-	bSuccess := GVL_WEIGHING_HMI.fbFilterPTn2.Configure(stConfig:=GVL_WEIGHING_HMI.STFilter2_PTn);
-END_IF
-
-IF GVL_WEIGHING_HMI.bReconfigurePTn3 THEN
-	GVL_WEIGHING_HMI.STFilter3_PTn.fKp 				:= GVL_WEIGHING_HMI.nGainPTn3;
-	GVL_WEIGHING_HMI.STFilter3_PTn.fT1 				:= GVL_WEIGHING_HMI.Tfc3;
-	GVL_WEIGHING_HMI.STFilter3_PTn.nOrder 			:= GVL_WEIGHING_HMI.nOrderPTn3;
-	GVL_WEIGHING_HMI.STFilter3_PTn.fSamplingRate 	:= GVL_WEIGHING_HMI.fSamplingRatePTn3;
-	GVL_WEIGHING_HMI.STFilter3_PTn.nOversamples		:= 1;
-	GVL_WEIGHING_HMI.STFilter3_PTn.nChannels 		:= 1;	
-
-	bSuccess := GVL_WEIGHING_HMI.fbFilterPTn3.Configure(stConfig:=GVL_WEIGHING_HMI.STFilter3_PTn);
-END_IF
+aSamplingPTn[1] := GVL_WEIGHING_HMI.fSamplingRatePTn1;
+aSamplingPTn[2] := GVL_WEIGHING_HMI.fSamplingRatePTn2;
+aSamplingPTn[3] := GVL_WEIGHING_HMI.fSamplingRatePTn3;
+aSamplingPTn[4] := GVL_WEIGHING_HMI.fSamplingRatePTn4;
+aSamplingPTn[5] := GVL_WEIGHING_HMI.fSamplingRatePTn5;
 
 
-IF GVL_WEIGHING_HMI.bReconfigurePTn4 THEN
-	GVL_WEIGHING_HMI.STFilter4_PTn.fKp 				:= GVL_WEIGHING_HMI.nGainPTn4;
-	GVL_WEIGHING_HMI.STFilter4_PTn.fT1 				:= GVL_WEIGHING_HMI.Tfc4;
-	GVL_WEIGHING_HMI.STFilter4_PTn.nOrder 			:= GVL_WEIGHING_HMI.nOrderPTn4;
-	GVL_WEIGHING_HMI.STFilter4_PTn.fSamplingRate 	:= GVL_WEIGHING_HMI.fSamplingRatePTn4;
-	GVL_WEIGHING_HMI.STFilter4_PTn.nOversamples		:= 1;
-	GVL_WEIGHING_HMI.STFilter4_PTn.nChannels 		:= 1;	
+// ===== Moving Avg =====
+aReconfigureMovAvg[1] := GVL_WEIGHING_HMI.bReconfigureMovAvg1;
+aReconfigureMovAvg[2] := GVL_WEIGHING_HMI.bReconfigureMovAvg2;
+aReconfigureMovAvg[3] := GVL_WEIGHING_HMI.bReconfigureMovAvg3;
+aReconfigureMovAvg[4] := GVL_WEIGHING_HMI.bReconfigureMovAvg4;
+aReconfigureMovAvg[5] := GVL_WEIGHING_HMI.bReconfigureMovAvg5;
 
-	bSuccess := GVL_WEIGHING_HMI.fbFilterPTn4.Configure(stConfig:=GVL_WEIGHING_HMI.STFilter4_PTn);
-END_IF
+aWindowMovAvg[1] := GVL_WEIGHING_HMI.nWindowSizeMovAvg1;
+aWindowMovAvg[2] := GVL_WEIGHING_HMI.nWindowSizeMovAvg2;
+aWindowMovAvg[3] := GVL_WEIGHING_HMI.nWindowSizeMovAvg3;
+aWindowMovAvg[4] := GVL_WEIGHING_HMI.nWindowSizeMovAvg4;
+aWindowMovAvg[5] := GVL_WEIGHING_HMI.nWindowSizeMovAvg5;
 
 
-IF GVL_WEIGHING_HMI.bReconfigurePTn5 THEN
-	GVL_WEIGHING_HMI.STFilter5_PTn.fKp 				:= GVL_WEIGHING_HMI.nGainPTn5;
-	GVL_WEIGHING_HMI.STFilter5_PTn.fT1 				:= GVL_WEIGHING_HMI.Tfc5;
-	GVL_WEIGHING_HMI.STFilter5_PTn.nOrder 			:= GVL_WEIGHING_HMI.nOrderPTn5;
-	GVL_WEIGHING_HMI.STFilter5_PTn.fSamplingRate 	:= GVL_WEIGHING_HMI.fSamplingRatePTn5;
-	GVL_WEIGHING_HMI.STFilter5_PTn.nOversamples		:= 1;
-	GVL_WEIGHING_HMI.STFilter5_PTn.nChannels 		:= 1;	
+FOR i := 1 TO 5 DO
+	// ===== PTn =====
+	IF aReconfigurePTn[i] THEN
+		
+		aST_PTn[i].fKp := aGainPTn[i];
+		aST_PTn[i].nOrder := aOrderPTn[i];
+		aST_PTn[i].fSamplingRate := aSamplingPTn[i];
+		aST_PTn[i].nOversamples := 1;
+		aST_PTn[i].nChannels := 1;
+		aTfc[i] := 
+			(1.0 / (2.0 * PI * aFc[i])) /
+			SQRT(EXPT(2.0, 1.0 / aOrderPTn[i]) - 1.0);
 
-	bSuccess := GVL_WEIGHING_HMI.fbFilterPTn5.Configure(stConfig:=GVL_WEIGHING_HMI.STFilter5_PTn);
-END_IF
+		aST_PTn[i].fT1 := aTfc[i];
+		
+		bSuccess := aPTn[i].Configure(stConfig := aST_PTn[i]);
+	END_IF
+	
+	// ===== RESET GLOBAL (se quiser manter) =====
+	IF bReset THEN
+		aPTn[i].Reset();
+	END_IF
 
+
+	// ===== MOVING AVERAGE =====
+	IF aReconfigureMovAvg[i] THEN		
+		aMovAvg[i].stConfig.nChannels := 1;
+		aMovAvg[i].stConfig.nOversamples := 1;
+		aMovAvg[i].stConfig.nSamplesToFilter := aWindowMovAvg[i];
+
+		bSuccess := aMovAvg[i].Configure(stConfig := aMovAvg[i].stConfig);
+	END_IF
+END_FOR
 ]]></ST>
       </Implementation>
     </Action>
     <Action Name="actFilterSignal" Id="{27459457-5bb7-4304-89a6-f56644db9350}">
       <Implementation>
-        <ST><![CDATA[// aRawSignal[1] := GVL_IO.EL3356_RawInput;
+        <ST><![CDATA[aFilterType[1] := GVL_WEIGHING_HMI.EFilter1;
+aFilterType[2] := GVL_WEIGHING_HMI.EFilter2;
+aFilterType[3] := GVL_WEIGHING_HMI.EFilter3;
+aFilterType[4] := GVL_WEIGHING_HMI.EFilter4;
+aFilterType[5] := GVL_WEIGHING_HMI.EFilter5;
 
-// yFiltroEntrada := GVL_IO.EL3356_RawInput;
 
+// Entrada inicial
 yFiltroEntrada := aRawInputNoise[1];
+aFilterBuffer[0] := yFiltroEntrada;
 
-(* First Filter *)
-IF GVL_WEIGHING_HMI.EFilter1 = 0 THEN // Disabled
-	yFiltroSaida := yFiltroEntrada;	
-ELSIF GVL_WEIGHING_HMI.EFilter1 = 1 THEN // PTn
-	bSucceed := GVL_WEIGHING_HMI.fbFilterPTn1.Call(ADR(yFiltroEntrada), SIZEOF(yFiltroEntrada), ADR(yFiltroSaida), SIZEOF(yFiltroSaida));
-END_IF
+// Loop de filtros
+FOR i := 1 TO 5 DO
 
-(* Second Filter *)
-IF GVL_WEIGHING_HMI.EFilter2 = 0 THEN // Disabled
-	yFiltroSaida2 := yFiltroSaida;	
-ELSIF GVL_WEIGHING_HMI.EFilter2 = 1 THEN // PTn
-	bSucceed := GVL_WEIGHING_HMI.fbFilterPTn2.Call(ADR(yFiltroSaida), SIZEOF(yFiltroSaida), ADR(yFiltroSaida2), SIZEOF(yFiltroSaida2));
-END_IF
+	CASE aFilterType[i] OF
 
-(* Third Filter *)
-IF GVL_WEIGHING_HMI.EFilter3 = 0 THEN // Disabled
-	yFiltroSaida3 := yFiltroSaida2;	
-ELSIF GVL_WEIGHING_HMI.EFilter3 = 1 THEN // PTn
-	bSucceed := GVL_WEIGHING_HMI.fbFilterPTn2.Call(ADR(yFiltroSaida2), SIZEOF(yFiltroSaida2), ADR(yFiltroSaida3), SIZEOF(yFiltroSaida3));
-END_IF
+		0: // Disabled
+			aFilterBuffer[i] := aFilterBuffer[i-1];
 
-(* Fourth Filter *)
-IF GVL_WEIGHING_HMI.EFilter4 = 0 THEN // Disabled
-	yFiltroSaida4 := yFiltroSaida3;	
-ELSIF GVL_WEIGHING_HMI.EFilter4 = 1 THEN // PTn
-	bSucceed := GVL_WEIGHING_HMI.fbFilterPTn2.Call(ADR(yFiltroSaida3), SIZEOF(yFiltroSaida3), ADR(yFiltroSaida4), SIZEOF(yFiltroSaida4));
-END_IF
+		1: // PTn
+			bSucceed := aPTn[i].Call(
+				ADR(aFilterBuffer[i-1]),
+				SIZEOF(aFilterBuffer[i-1]),
+				ADR(aFilterBuffer[i]),
+				SIZEOF(aFilterBuffer[i])
+			);
 
-(* Fifth Filter *)
-IF GVL_WEIGHING_HMI.EFilter5 = 0 THEN // Disabled
-	yFiltroSaida5 := yFiltroSaida4;	
-ELSIF GVL_WEIGHING_HMI.EFilter5 = 1 THEN // PTn
-	bSucceed := GVL_WEIGHING_HMI.fbFilterPTn2.Call(ADR(yFiltroSaida4), SIZEOF(yFiltroSaida4), ADR(yFiltroSaida5), SIZEOF(yFiltroSaida5));
-END_IF
+		2: // Moving Average
+			bSucceed := aMovAvg[i].Call(
+				ADR(aFilterBuffer[i-1]),
+				SIZEOF(aFilterBuffer[i-1]),
+				ADR(aFilterBuffer[i]),
+				SIZEOF(aFilterBuffer[i])
+			);
 
+	END_CASE
 
-aRawSignal[1] := yFiltroSaida5; // Recebe sempre a última saída]]></ST>
+END_FOR
+
+// Saída final
+aRawSignal[1] := aFilterBuffer[5];]]></ST>
       </Implementation>
     </Action>
     <Method Name="AddSlope" Id="{ee9128aa-88b8-4ea6-8dbe-a6fc1a70e11f}">
